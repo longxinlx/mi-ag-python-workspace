@@ -1,2 +1,2 @@
-current_general_ctx|{"serviceId":"EF5A21FFEE864BA1AD1F173B3E2F0964","sessionId":"3F5CB28A9A414648AFD233AA65AEA36B","channelName":"agora","sdkVersion":"4.2.31","deviceId":"Linux version 4.15.0-213-generic (buildd@lcy02-amd64-079) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #224-Ubuntu SMP Mon Jun 19 13:30:12 UTC 2023
-","appId":"aab8b8f5a8cd4469a63042fcfafe7063","networkType":1,"channelMode":0,"clientType":0,"clientRole":1,"buildNo":296989,"vid":130451,"cid":2952433242,"uid":3956010921}|
+current_general_ctx|{"serviceId":"D780A2F22DA04E248E40261146DEBD3C","sessionId":"","channelName":"","sdkVersion":"4.2.31","deviceId":"Linux version 5.15.0-92-generic (buildd@lcy02-amd64-005) (gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #102-Ubuntu SMP Wed Jan 10 09:33:48 UTC 2024
+","appId":"20338919f2ca4af4b1d7ec23d8870b56","networkType":0,"channelMode":0,"clientType":0,"clientRole":0,"buildNo":296989,"vid":0,"cid":0,"uid":0}|

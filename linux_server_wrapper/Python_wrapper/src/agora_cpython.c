@@ -5,7 +5,7 @@
 // ./C_language_wrapper/agora_sdk/ -lpython3.6m
 
 #define PY_SSIZE_T_CLEAN
-#include <python3.6/Python.h>
+#include <python3.10/Python.h>
 #include "../../C_wrapper/src/agora_rtc_wrapper.h"
 
 static PyObject* callback_func = NULL;
