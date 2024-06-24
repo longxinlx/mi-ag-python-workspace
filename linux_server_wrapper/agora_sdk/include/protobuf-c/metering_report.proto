@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package io.agora.pb.metering_report;
+
+message MeteringReport {
+   int64              lts = 1;                //information generation utc timestamp，milliseconds
+   MeteringDimension  dimension = 2;          //metering common info
+   MeteringItem       ainsV2 = 3;             //ains item
+   MeteringItem       spatialAudioV3 = 4;     //spatialAudio item
+   MeteringItem       aiaecV1 = 5;            //aiaec item
+   MeteringItem       virtualBackgroundV1 = 6; //segmentation item
+   MeteringItem       hevcDecWzV1 = 7;         //hevcdecwz item
+   MeteringItem       hevcEncWzV1 = 8;         //hevcencwz item
+}
+ 
+message MeteringDimension {
+    int64  vid = 1;
+    int64  cid = 2;
+    int64  uid = 3;
+    string  stringUid = 4;
+    string  serviceId = 5;
+    string  sid = 6;
+    string  sdkVersion = 7;
+    string  installId = 8;
+    int32   collectInterval = 9; // seconds
+}
+
+message MeteringItem {
+    int32  value = 1;           // 1 means closed and 2 means open. SDK always assigns this value, and the default value 0 cannot be used.
+    int32  tsDelta = 2;         // ignored
+    int32  level = 3;           // functionLevel
+    int64  totalTs = 4;         // duration time based on session id
+}

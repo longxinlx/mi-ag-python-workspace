@@ -1,0 +1,19 @@
+{
+    "LogPath" : "./io.agora.rtc_sdk/agorasdk.log",
+    "Token" : "xxxx",
+    "ChannelId" : "agora",
+    "UserId" : "0",
+    "AuidoConfig" : {
+        "SubAullAuido" : true,
+        "AudioSendChannelNum" : 1,
+        "AudioSendSampleRate" : 16000,
+        "AudioRevChannelNum" : 1,
+        "AudioRevSampleRate" : 16000
+    },
+    "VideoConfig" : {
+        "width" : 352,
+        "height" : 288,
+        "fps" : 25,
+        "bitrate" : 1000
+    }
+ }

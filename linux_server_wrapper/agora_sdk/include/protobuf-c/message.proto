@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package io.agora.pb.message;
+
+message Message {
+    int32 id = 1;
+    bytes msg = 2;
+}
+message ImageRequest {
+  string appId = 1;
+  uint32 cid = 2;
+  string cname = 3;
+  string deviceId = 4;
+  int64 elapse = 5;
+  int32 fileSize = 6;
+  int32 height = 7;
+  bytes jpg = 8;
+  int32 networkType = 9;
+  int32 osType = 10;
+  string requestId = 11;
+  string sdkVersion = 12;
+  int32 sequence = 13;
+  string sid = 14;
+  int64 timestamp = 15;
+  uint32 uid = 16;
+  uint32 vid = 17;
+  int32 width = 18;
+  int32 service = 19;
+  string callbackData = 20;
+  uint32 jpgEncryption = 21;
+  uint32 requestType = 22;
+  double scorePorn = 23;
+  double scoreSexy = 24;
+  double scoreNeutral = 25;
+  uint32 scene = 26;
+  string ossFilePrefix = 27;
+  repeated ServiceVendor serviceVendor = 28;
+}
+
+message ImageModerationApiReply {
+  int32 code = 1;
+  string msg = 2;
+  ImageModerationApiData data = 3;
+}
+
+message ImageModerationApiData {
+  string requestId = 1;
+  uint32 requestType = 2;
+  double scorePorn = 3;
+  double scoreSexy = 4;
+  double scoreNeutral = 5;
+  uint32 requestScene = 6;
+  uint32 scene = 7;
+}
+
+message ServiceVendor {
+  uint32 service = 1;
+  uint32 vendor = 2;
+  string token = 3;
+  string callbackUrl = 4;
+}
+
+message ImageModerationPluginApiRequest {
+  string appId = 1;
+  uint32 cid = 2;
+  string cname = 3;
+  string deviceId = 4;
+  int64 elapse = 5;
+  int32 fileSize = 6;
+  int32 height = 7;
+  bytes jpg = 8;
+  int32 networkType = 9;
+  int32 osType = 10;
+  string requestId = 11;
+  string sdkVersion = 12;
+  int32 sequence = 13;
+  string sid = 14;
+  int64 timestamp = 15;
+  uint32 uid = 16;
+  uint32 vid = 17;
+  int32 width = 18;
+  uint32 service = 19;
+  bytes callbackData = 20;
+  string ticket = 21;
+  string vendorConfigs = 22;
+}
+ 
+message ImageModerationPluginApiReply {
+  int32 code = 1;
+  string msg = 2;
+  string requestId = 3;
+  int64 timestamp = 4;
+}

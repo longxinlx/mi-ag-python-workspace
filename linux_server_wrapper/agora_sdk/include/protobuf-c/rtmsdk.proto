@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package io.agora.pb.rtmsdk;
+
+message TopicMetadata {
+    string topic = 1;
+    string metadata = 2;
+}
+
+message StreamMessageProtocol {
+    int32 messageType = 1;
+    bytes payload = 2;
+    int32 payloadLength = 3;
+    int64 sequence = 4;
+    int64 sendTs = 5;
+    bool encrypted = 6;
+    bytes customType = 7;
+}
+

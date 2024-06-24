@@ -1,0 +1,615 @@
+syntax = "proto3";
+
+package io.agora.pb.rtmsdk;
+
+
+message CommonIndex {
+  string index1 = 1;
+  string index2 = 2;
+  string index3 = 3;
+}
+
+// id = 164
+message Session {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  string appId = 5; // application id
+  string ver = 6; // SDK version
+  int32 buildno = 7; // SDK build number
+  string installId = 8; // SDK install id
+  string localIp = 9; // local IP
+  string wanIp = 10; // WAN IP
+  int32 net1 = 11; // network type: unknown = -1, disconnected = 0, lan = 1, wifi = 2, mobile_2g = 3, mobile_3g = 4, mobile_4g = 5,
+  int32 netSubType = 12; // network sub-type: unknown = 0, mobile_gprs = 1, mobile_edge = 2, mobile_umts = 3, mobile_cdma = 4, mobile_evdo_0 = 5, mobile_evdo_a = 6, mobile_1xrtt = 7, mobile_hsdpa = 8, mobile_hsupa = 9, mobile_hspa = 10, mobile_iden = 11, mobile_evdo_b = 12, mobile_l
+  string ssid = 13; // SSID
+  string bssid = 14; // BSSID
+  int32 rssi = 15; // RSSI
+  int32 os = 16; // OS
+  string did = 17; // device id
+  string lsid = 18; // last session id
+  string fsid = 19; // first session id
+  CommonIndex index = 20; // n/a
+  string token = 21; // login token
+  int32 version = 22; // giant version in join option
+  int32 subVersion = 23; // sub version in join options
+  string deviceid = 24; // (starting from SDK 1.4) device uuid
+  string contextid = 25; // (starting from SDK 1.4) context uuid
+  int64 sessionsequence = 26; // (starting from SDK 1.4) the sequence of the session in the SDK context, starting from zero
+  int64 connectionsequence = 27; // (starting from SDK 1.4) the sequence of the connection in the SDK context with the same user id, starting from zero
+  int32 clientType = 28;  //clientType
+  int32 appType = 29; //appType
+}
+
+
+// id = 165
+message ApEvent {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  string apAddr = 6; // AP address
+  string linkServerList = 7; // RTM link endpoints returned by AP
+  string localWanIp = 8; // local WAN IP
+  int32 errCode = 9; // RTM AP error code: ok = 0, unknown = 1, not initialized or rejected = 2, invalid argument = 3, invalid app id = 4, invalid token = 5, token expired = 6, not authorized = 7, already logged in = 8, timeout = 9, too often = 10, not initialized = 101, timed o
+  int32 serverErrCode = 10; // AP server error code: invalid vendor key = 5, invalid channel name = 7, internal error = 8, no authorized = 9, dynamic key timeout = 10, no active status = 11, dynamic key expired = 13, static use dyanmic key = 14, dynamic use static key = 15,
+  string isp = 11; // ISP
+  int64 opId = 12; // operation id
+  int32 envId = 13; // link environment (0 or 1)
+  int32 flag = 14; // voice = 1, p2p = 2, webrtc = 4, cds = 8, cdn_dispatcher = 16, report = 32, tds = 64, rtm = 128, worker_manager = 256, voet = 512, live_raw_stream = 256 // only used in sdk, live_mix_stream = 512  // only used in sdk, live_inject_stream = 1024  // only use
+  string area = 15; // area
+  int32 responseTime = 16; // time since AP request
+  string apLinkType = 17; // AP link type (udp or tcp)
+  int32 version = 18; // (starting from SDK 1.4) SDK API major version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 subVersion = 19; // (starting from SDK 1.4) SDK API minor version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int64 connectionsequence = 20; // (starting from SDK 1.4) the sequence of the connection in the SDK context with the same user id, starting from zero
+  int32 resultcount = 21; // (starting from SDK 1.4) the number of endpoints returned by AP
+  int32 validresultcount = 22; // (starting from SDK 1.4) the number of valid endpoints returned by AP
+  int32 newvalidresultcount = 23; // (starting from SDK 1.4) the number of new valid endpoints returned by AP
+}
+
+// id = 166
+message Link {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  int32 ec = 5; // error code: keep alive timeout = 100100, connect error = 100101, login timeout = 100102, socket error = 100103,
+  int32 sc = 6; // ok = 0, out of service = 1, invalid ticket = 4, overload = 10, ticket parse error = 17, ticket invalid length = 18, not authorized = 19, unknown version = 20, unknown result = 10001,
+  string destServerIp = 7; // RTM edge server IP
+  string ackedServerIp = 8; // connected RTM edge server IP
+  int32 responseTime = 9; // time since RTM edge server connection request
+  int32 version = 10; // (starting from SDK 1.4) SDK API major version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 subVersion = 11; // (starting from SDK 1.4) SDK API minor version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int64 connectionsequence = 12; // (starting from SDK 1.4) the sequence of the connection in the SDK context with the same user id, starting from zero
+  int32 linktype = 13; // (starting from SDK 1.4) link type, 1: TCP, 2: UDP, 3: TCP-over-TLS, 32: AUT, 48: secure AUT
+  int64 linkflag = 14; // (starting from SDK 1.4) link flag (value TBD)
+  int32 linkenv = 15; // (starting from SDK 1.4) link environment (0 or 1)
+}
+
+// id = 167
+message Logout {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  int32 version = 5; // (starting from SDK 1.4) SDK API major version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 subVersion = 6; // (starting from SDK 1.4) SDK API minor version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int64 connectionsequence = 7; // (starting from SDK 1.4) the sequence of the connection in the SDK context with the same user id, starting from zero
+  int32 linktype = 8; // (starting from SDK 1.4) link type, 1: TCP, 2: UDP, 3: TCP-over-TLS, 32: AUT, 48: secure AUT
+  int64 linkflag = 9; // (starting from SDK 1.4) link flag (value TBD)
+  int32 linkenv = 10; // (starting from SDK 1.4) link environment (0 or 1)
+}
+
+//id = 168
+message TxMessage {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  int64 insId = 6;
+  int64 dialId = 7;
+  int64 seq = 8;
+  string srcId = 9;
+  string dstId = 10;
+  int32 dstType = 11;
+  string payload = 12;
+  int64 messageId = 13;
+  bool isOfflineMessage = 14;
+}
+
+//id = 169
+message RxMessage {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  int64 insId = 6;
+  int64 dialId = 7;
+  int64 seq = 8;
+  string srcId = 9;
+  string dstId = 10;
+  int32 dstType = 11;
+  string payload = 12;
+  int64 messageId = 13;
+  int64 serverReceivedTs = 14;
+  bool isOfflineMessage = 15;
+}
+
+//id = 170
+message KickedOff {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  int32 linkId = 6;
+  int32 code = 7;
+  string server = 8;
+  int32 serverCode = 9;
+}
+
+//id = 171
+message TxMessageRes {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  int64 insId = 6;
+  int64 dialId = 7;
+  int64 seq = 8;
+  string srcId = 9;
+  string dstId = 10;
+  int32 dstType = 11;
+  int64 messageId = 12;
+  int32 err_code = 13;
+}
+
+//id = 172
+message ChnJoin {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  int32 errCode = 7;
+  int64 seq = 8; 
+}
+
+//id = 173
+message ChnJoinRes {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  int32 errCode = 7;
+  int32 serverErrCode = 8;
+  int64 seq = 9; 
+}
+
+//id = 174
+message ChnLeave {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  int32 errCode = 7;
+}
+
+//id = 175
+message ChnGetMembers {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  int32 errCode = 7;
+}
+
+//id = 176
+message ChnGetMembersRes {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  int32 errCode = 7;
+  int32 size = 8;
+}
+
+//id = 177
+message ChnMemberJoined {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  string memberId = 7;
+}
+
+//id = 178
+message ChnMemberLeft {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  string memberId = 7;
+}
+
+//id = 179
+message QueryPeersOnlineStatus {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  int32 peerCount = 6;
+}
+
+//id = 180
+message QueryPeersOnlineStatusRes {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  int32 peerCount = 6;
+  int32 errCode = 7;
+}
+
+//id = 181
+message RenewToken {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  CommonIndex index = 5;
+  string cname = 6;
+  string token = 7;
+}
+
+//id = 186
+message OperateAttribute {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  string cname = 5;
+  string destId = 6;
+  int32 attributeType = 7;
+  int32 operationType = 8;
+  int64 seq = 9;
+}
+
+//id = 187
+message OperateAttributeRes {
+  string sid = 1;
+  string userId = 2;
+  int64 lts = 3;
+  int64 elapse = 4;
+  string cname = 5;
+  string destId = 6;
+  int32 attributeType = 7;
+  int64 seq = 8;
+  int32 code = 9;
+}
+
+// id = 188
+message ApRequest {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  string apAddr = 5; // AP address
+  int64 opId = 6; // operation id, and the value is actually a local timestamp
+  int32 envId = 7; // link environment (0 or 1)
+  int32 flag = 8; // reserved
+  int32 version = 9; // (starting from SDK 1.4) SDK API major version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 subVersion = 10; // (starting from SDK 1.4) SDK API minor version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int64 connectionsequence = 11; // (starting from SDK 1.4) the sequence of the connection in the SDK context with the same user id, starting from zero
+  int64 rtmapflag = 12; // (starting from SDK 1.4) RTM specific AP request flag (value TBD)
+}
+
+// id = 189
+message LinkTcpEvent {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  string destServerIp = 5; // RTM edge server IP
+  string action = 6; // RTM edge server connection action: create, connect, on connect, socket error,
+  int32 code = 7; // result code: 0 (OK) or 1 (error)
+  int32 responseTime = 8; // time since RTM edge server login request
+  int32 version = 9; // (starting from SDK 1.4) SDK API major version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 subVersion = 10; // (starting from SDK 1.4) SDK API minor version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int64 connectionsequence = 11; // (starting from SDK 1.4) the sequence of the connection in the SDK context with the same user id, starting from zero
+  int32 linktype = 12; // (starting from SDK 1.4) link type, 1: TCP, 2: UDP, 3: TCP-over-TLS, 32: AUT, 48: secure AUT
+  int64 linkflag = 13; // (starting from SDK 1.4) link flag (value TBD)
+  int32 linkenv = 14; // (starting from SDK 1.4) link environment (0 or 1)
+}
+
+// id = 190
+message LinkLoginRequest {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  string destServerIp = 5; // RTM edge server IP
+  int32 linkId = 6; // link environment (0 or 1)
+  int32 version = 7; // (starting from SDK 1.4) SDK API major version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 subVersion = 8; // (starting from SDK 1.4) SDK API minor version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int64 connectionsequence = 9; // (starting from SDK 1.4) the sequence of the connection in the SDK context with the same user id, starting from zero
+  int32 linktype = 10; // (starting from SDK 1.4) link type, 1: TCP, 2: UDP, 3: TCP-over-TLS, 32: AUT, 48: secure AUT
+  int64 linkflag = 11; // (starting from SDK 1.4) link flag (value TBD)
+  int32 linkenv = 12; // (starting from SDK 1.4) link environment (0 or 1)
+  string registraraddress = 13; // (starting from SDK 1.4) RTM registrar server address
+}
+
+// id = 191
+message ConnectionStateChange {
+  string sid = 1; // session id
+  string userId = 2; // user id
+  int64 lts = 3; // local time stamp
+  int64 elapse = 4; // time since login request
+  int32 oldState = 5; // old state: disconnected = 1, connecting = 2, connected = 3, reconnecting = 4, aborted = 5
+  int32 newState = 6; // new state: disconnected = 1, connecting = 2, connected = 3, reconnecting = 4, aborted = 5
+  int32 reason = 7; // reason: login = 1, login success = 2, login failure = 3, login timeout = 4, interrupted = 5, logout = 6, banned by server = 7, remote login = 8,
+  int32 reconnId = 8; // re-connection id, incremental value in a session
+  int32 version = 9; // (starting from SDK 1.4) SDK API major version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 subVersion = 10; // (starting from SDK 1.4) SDK API minor version https://confluence.agoralab.co/pages/viewpage.action?pageId=642820886
+  int32 lastdonestep = 11; // (starting from SDK 1.4) the last step done since the last connection state change, 0: initialization, 10: AP request, 11: AP response, 12: AP result, 20: link request, 21: link connection, 30: login request, 31: login response, 32: login result
+  int32 failedstep = 12; // (starting from SDK 1.4) the failed step since the last connection state change, 0: initialization, 10: AP request, 11: AP response, 12: AP result, 20: link request, 21: link connection, 30: login request, 31: login response, 32: login result
+  int64 errorcode = 13; // (starting from SDK 1.4) error code of the failed step
+  int64 servererrorcode = 14; // (starting from SDK 1.4) server error code of the failed step
+  int64 networkchangesequence = 15; // (starting from SDK 1.4) the number of network changes in the context
+  int64 networkchangeelapse = 16; // (starting from SDK 1.4) time since last network change, in milliseconds
+  int64 statechangeelapse = 17; // (starting from SDK 1.4) time since last connection state change, in milliseconds
+}
+// id = 345
+message CrashEvent {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 crashVer = 7;
+  int32 dmpType = 8;
+  int64 lstLts = 9;
+  int64 lstCrashAddr = 10;
+  int64 lstLdBegin = 11;
+  int64 lstLdEnd = 12;
+  string lstServiceId = 13;
+  string lstSessionId = 14;
+  string lstChannelName = 15;
+  string lstSdkVer = 16;
+  int32 lstNetwork = 17;
+  int32 lstChannelMode = 18;
+  int32 lstChannelProfile = 19;
+  int32 lstClientType = 20;
+  int32 lstClientRole = 21;
+  string lstCrashUid = 22;
+  int32 lstBuildNo = 23;
+  bool isDumpFile = 24;
+  int32 os = 25;
+  string deviceid = 26;
+  string installid = 27;
+  string appid = 28;
+  int32 cpuarch = 29;
+}
+// id = 510
+message RtmSdkMessageCount {
+  int64 lts = 1; // 时间戳，必须存在
+  int64 vid = 2; // vendor id
+  string sid = 3; // session id
+  int32 messagecategory = 4; // message category: 0-1000 are reserved as permanent categories; >1000 are temporary categories.  1: channel-smsg, 2: channel-rmsg, 3: p2p-smsg-offline-flag (p2p string message with offline flag), 4: p2p-rmsg-offline-flag (p2p raw message with offline flag)
+  int64 reportsequence = 5; // sequence number of the delivery delay events reported in a single session
+  int64 sentcount = 6; // the number of messages sent in this session
+  int64 receivedcount = 7; // the number of messages received in this session
+  int64 peerack10mscount = 8; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [0, 10) ms
+  int64 peerack25mscount = 9; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [10, 25) ms
+  int64 peerack50mscount = 10; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [25, 50) ms
+  int64 peerack75mscount = 11; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [50, 75) ms
+  int64 peerack100mscount = 12; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [100, 150) ms
+  int64 peerack150mscount = 13; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [100,150) ms
+  int64 peerack200mscount = 14; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [150,200) ms
+  int64 peerack250mscount = 15; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [200,250) ms
+  int64 peerack300mscount = 16; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [250,300) ms
+  int64 peerack400mscount = 17; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [300,400) ms
+  int64 peerack500mscount = 18; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [400,500) ms
+  int64 peerack600mscount = 19; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [500,600) ms
+  int64 peerack800mscount = 20; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [600,800) ms
+  int64 peerack1000mscount = 21; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [800,1000) ms
+  int64 peerack2000mscount = 22; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [1000,2000) ms
+  int64 peerack3000mscount = 23; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [2000,3000) ms
+  int64 peerack5000mscount = 24; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [3000,5000) ms
+  int64 peerack7000mscount = 25; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [5000,7000) ms
+  int64 peerackslowcount = 26; // the number of messages sent to peer with ACK delay (RTT/2) in the range of [7000,_) ms
+  int64 norecipientack10mscount = 27; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [0,10) ms
+  int64 norecipientack25mscount = 28; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [10,25) ms
+  int64 norecipientack50mscount = 29; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [25,50) ms
+  int64 norecipientack75mscount = 30; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [50,75) ms
+  int64 norecipientack100mscount = 31; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [75,100) ms
+  int64 norecipientack150mscount = 32; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [100,150) ms
+  int64 norecipientack200mscount = 33; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [150,200) ms
+  int64 norecipientack250mscount = 34; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [200,250) ms
+  int64 norecipientack300mscount = 35; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [200,250) ms
+  int64 norecipientack400mscount = 36; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [300,400) ms
+  int64 norecipientack500mscount = 37; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [400,500) ms
+  int64 norecipientack600mscount = 38; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [500,600) ms
+  int64 norecipientack800mscount = 39; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [600,800) ms
+  int64 norecipientack1000mscount = 40; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [800,1000) ms
+  int64 norecipientack2000mscount = 41; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [1000,2000) ms
+  int64 norecipientack3000mscount = 42; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [2000,3000) ms
+  int64 norecipientack5000mscount = 43; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [3000,5000) ms
+  int64 norecipientack7000mscount = 44; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [5000,7000) ms
+  int64 norecipientackslowcount = 45; // the number of messages with no-recipient ACK delay (RTT/2) in the range of [7000,_) ms
+  int64 acktimeoutcount = 46; // the number of messages without ACK received in time
+  int32 apimajorversion = 47; // RTM server API major version (aka ver, version)
+  int32 apiminorversion = 48; // RTM server API minor version (aka subver, subVersion)
+  int32 os = 49; // SDK OS: (1: Android, 2: iOS, 5: Windows, 6: Linux, 7:web, 8: macOS)
+  int32 toooftencount = 50; 
+  int32 receiverofflinecount = 51; 
+  int32 invalidmessagecount = 52; 
+  int32 unknowerrorcount = 53; 
+  int32 servercachedcount = 54; 
+  int32 timeoutcount = 55;
+  int32 successcount = 56; 
+  string userid = 57; 
+}
+
+// id = 781
+message DnsParseRequest {
+  int64 lts = 1; 
+  int64 vid = 2; // vid
+  string sid = 3; // sessionid
+  int64 elapse = 4; // mili seconds after login
+  string domain = 5; // dns domain
+  string userid = 6; // userid
+  int64 opid = 7; // opid
+  int32 flag = 8; // flag
+  int32 version = 9; // version
+  int32 subversion = 10; // subversion
+  int64 connectionSequence = 11; // connectionSequence
+  string source = 12; // source
+  string dnsid = 13; // dnsid
+}
+
+// id = 788
+message DnsParseResponse {
+  int64 lts = 1; 
+  int64 vid = 2; // vid 
+  string sid = 3; // sid
+  string userid = 4; // userid
+  int64 elapse = 5; // elapse
+  string domain = 6; // domain
+  int64 opid = 7; // opid
+  int32 flag = 8; // flag
+  int64 connectionSequence = 9; // connectionSequence
+  int32 type = 10; // type
+  string source = 11; // source
+  string dnsid = 12; // dnsid
+  int32 version = 13; // version
+  int32 subversion = 14; // subversion
+}
+
+// id = 9020
+message Service {
+  int64 lts = 1; 
+  string sid = 2; // session id
+  int32 os = 3; 
+  string deviceId = 4; 
+  string installId = 5; 
+  string sdkVer = 6;
+  int32 enableXdump = 7; 
+  int32 enableXdumpFile = 8; 
+  int32 enableXdumpUpload = 9; 
+  string appId = 10; // app id
+  string serviceId = 11; 
+  int32 sdkBuildNumber = 12; 
+  int32 networkType = 13; 
+  int32 subNetworkType = 14; 
+  int32 rssi = 15; 
+  int32 clientType = 17; 
+  int32 appType = 18;
+}
+
+
+// id = 9651
+message SyncSubscribeEvent {
+  int64 lts = 1; // 上报时间戳，精确到ms
+  string ip = 2; // sdk ip
+  string userid = 3; // 用户名
+  int64 vid = 4; // 厂商id
+  string sid = 5; // session id，根据hash(target) + vid拼接得出
+  string target = 8; // 修改的状态名，对于NativeSDK，是某一个频道名或用户名，对于ServerSDK可以是完整Doc名字
+  string eventtype = 9; // 事件类型（Subscribe / Unsubscribe ...）
+  int32 sdktype = 12; // 1表示ServerSDK，2表示服务端（边缘），3表示NativeSDK
+  int64 flags = 13; // 用于标识操作的特性（针对频道状态还是用户状态等等）
+  int32 code = 14; // 错误码
+  int64 seq = 15; // 请求序列号，从1开始递增
+  int64 requestts = 16; // 请求发送时间，精确到ms	
+  int64 replyts = 17; // 回复收到时间，精确到ms	
+  CommonIndex index = 18; // 用于UAP索引，index1填target，index2和index3暂时留空
+  string subtarget = 19; // 临时状态名
+  string usersid = 20; // 用户的sid （客户端和服务端都需要上报），用于关联其它上报获取sid的维度
+  string sdkip = 21; // sdk的ip，只服务端上报，sdk端侧不上报（ip字段已经是sdk上报时候的ip）
+}
+
+// id = 9654
+message SyncOperateEvent {
+  int64 lts = 1; // 上报时间戳，精确到ms
+  string ip = 2; // sdk ip，服务端上报的时候是server的ip，端侧上报的时候是sdk的ip
+  string userid = 3; // 用户名
+  int64 vid = 4; // 厂商id
+  string sid = 5; // session id，根据hash(target) + vid拼接得出
+  int64 requestts = 6; // 请求发送时间，精确到ms
+  int64 replyts = 7; // 回复收到时间，精确到ms
+  string target = 8; // 修改的状态名，对于NativeSDK，是某一个频道名或用户名，对于ServerSDK可以是完整Doc名字
+  string eventtype = 9; // 事件类型（Set / Del / Get / SetResult / DelResult / GetResult ...）
+  int64 revision = 10; // 对于Set / Delete / Modify，表示CAS操作中的base_revision；对于SetResult / DeleteResult / ModifyResult / GetResult，表示收到的状态的revision
+  string uuid = 11; // Set / Del的唯一操作标识符，用于双环境除重
+  int32 sdktype = 12; // 1表示ServerSDK，2表示服务端（边缘），3表示NativeSDK
+  int64 flags = 13; // 用于标识操作的特性（针对频道状态还是用户状态、针对完整状态还是单个key、是否是CAS操作等等）
+  int32 code = 14; // 错误码
+  int64 seq = 15; // 请求序列号，从1开始递增
+  CommonIndex index = 16; // 用于UAP索引，index1填target，index2和index3暂时留空
+  string lock = 17; // 锁
+  int64 lockrev = 18; // 锁的revision
+  string subtarget = 19; // 临时状态名
+  string usersid = 20; // 用户的sid （客户端和服务端都需要上报），用于关联其它上报获取sid的维度
+  string sdkip = 21; // sdk的ip，只服务端上报，sdk端侧不上报（ip字段已经是sdk上报时候的ip）
+}
+
+
+// id = 10069
+message PresenceLink {
+  int64 lts = 1; // 时间戳，必须存在
+  int64 vid = 2; // vid 信息
+  string sid = 3; // session id
+  int64 requestTs = 4; // 请求发起的lts
+  int64 responseTs = 5; // 收到服务器的回复，或者请求结束的lts
+  string userId = 6; // 用户名
+  string destServerIp = 7; // 连接的presence服务器ip
+  int64 elapse = 8; // 请求完成的耗时
+  int32 code = 9; // errorCode
+  int32 serverCode = 10; // 服务端返回的code
+  int32 linkType = 11; // 0: AUT 1: TLS
+}
+
+// id = 10070
+message ChannelPresenceSnapshotEvent {
+  int64 lts = 1; // 时间戳，必须存在
+  int64 vid = 2; // vid 信息
+  string sid = 3; // session id
+  string userId = 4; // 用户名
+  string channelName = 5; // 频道名
+  int32 channelType = 6; // 频道类型
+  int64 elapse = 7; // 发起订阅到收到snapshot的时间间隔
+  int64 reqId = 8; // 对应的订阅请求的序列号
+}
+
+// id = 10071
+message LoginResult {
+  int64 lts = 1; // 时间戳，必须存在
+  int64 vid = 2; // vid 信息
+  string sid = 3; // session id
+  int32 code = 4; // 登录结果
+  int64 elapse = 5; // 发起登录请求到登录结果返回的耗时
+  string userId = 6; // 用户名
+}
+  

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package agora.pb.meta;
+option java_outer_classname = "MetaMsg";
+
+enum MetaMsgType {
+  UNKNOWN_TYPE = 0;
+  USER_STATE = 1;
+  USER_AVATAR_INFO = 2;
+  USER_STOP_SYNC = 3;
+  AUDIENCE_INFO = 4;
+  AUDIENCE_LEAVE = 5;
+  CUSTOM_MESSAGE = 256;
+}
+
+message MetaMsg {
+  uint32 version = 1;
+  MetaMsgType type = 2;
+  uint32 msgId = 3;
+  bytes payload = 4;
+}
+
+// message defination
+
+message VectorFloat {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message UserState {
+  string userId = 1;
+  uint32 state = 2;
+  VectorFloat position = 3;
+  VectorFloat forward = 4;
+  VectorFloat right = 5;
+  VectorFloat up = 6;
+  bytes extra = 7;
+}
+
+message UserAvatarInfo {
+  string userId = 1;
+  string userName = 2;
+  string userIconUrl = 3;
+  string bundleCode = 4;
+  bool visible = 5;
+  bytes extraInfo = 6;
+}
+
+message AudienceInfo {
+  string userId = 1;
+  string userName = 2;
+}

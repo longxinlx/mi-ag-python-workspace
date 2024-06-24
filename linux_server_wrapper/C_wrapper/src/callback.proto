@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package agoracallback;
+
+message TConnectionInfo {
+  int32 id = 1;
+  string channelId = 2;
+  int32 state = 3;
+  string localUserId = 4;
+  int32 internalUid = 5;
+  int32 proxyType = 6;
+  string connectionIp = 7;
+}

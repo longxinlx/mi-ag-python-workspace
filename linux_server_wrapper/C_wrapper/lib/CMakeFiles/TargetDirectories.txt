@@ -1,0 +1,3 @@
+/home/zz/for_mult_language/C_language_wrapper/lib/CMakeFiles/agora_rtc_c.dir
+/home/zz/for_mult_language/C_language_wrapper/lib/CMakeFiles/edit_cache.dir
+/home/zz/for_mult_language/C_language_wrapper/lib/CMakeFiles/rebuild_cache.dir

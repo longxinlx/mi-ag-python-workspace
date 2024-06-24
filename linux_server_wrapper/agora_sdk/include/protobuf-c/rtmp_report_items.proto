@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package io.agora.pb.rtmp;
+
+message RSKInitialize {
+    int64 lts = 1;
+    string uuid = 2;
+    int32 vid = 3;
+    string installId = 4;
+    int64 requestId = 5;
+    string version = 6;
+    int32 audioSampleRateHz = 7;
+    int32 audioBytesPerSample = 8;
+    int32 audioSoundType = 9;
+    int32 audioBitrate = 10;
+    int32 videoFramerate = 11;
+    int32 videoBitrate = 12;
+    int32 videoMaxBitrate = 13;
+    int32 videoMinBitrate = 14;
+    int32 width = 15;
+    int32 height = 16;
+    int32 videoOrientationMode = 17;
+    string os = 18;
+    int32 errorCode = 19;
+    string reason = 20;
+    int64 sequence = 21;
+    int32 net1 = 22;
+    string did = 23;
+    int32 os1 = 24;
+    string startId = 25;
+}
+
+message RSKDestroy {
+    int64 lts = 1;
+    string uuid = 2;
+    int32 vid = 3;
+    string installId = 4;
+    int64 requestId = 5;
+    string version = 6;
+    int32 errorCode = 7;
+    string reason = 8;
+    string startId = 9;
+    int64 sequence = 10;
+}
+
+message RSKStartStreaming {
+    int64 lts = 1;
+    string uuid = 2;
+    int32 vid = 3;
+    string installId = 4;
+    int64 requestId = 5;
+    string version = 6;
+    string url = 7;
+    string streamingId = 8;
+    string startId = 9;
+    int64 sequence = 10;
+}
+
+message RSKStartSreamingResponse {
+    int64 lts = 1;
+    string uuid = 2;
+    int32 vid = 3;
+    string installId = 4;
+    int64 requestId = 5;
+    string version = 6;
+    string streamingId = 7;
+    int32 errorCode = 8;
+    string reason = 9;
+    string startId = 10;
+    int64 sequence = 11;
+    string url = 15;
+    string streamId = 18;
+    int64 responseTime = 19;
+}
+
+message RSKStopStreaming {
+    int64 lts = 1;
+    string uuid = 2;
+    int32 vid = 3;
+    string installId = 4;
+    int64 requestId = 5;
+    string version = 6;
+    string streamingId = 7;
+    string startId = 8;
+    int64 sequence = 9;
+    string streamId = 10;
+    string url = 11;
+}
+
+message RSKNetworkState {
+    int64 lts = 1;
+    string startId = 2;
+    int64 sequence = 3;
+    int32 net1 = 4;
+    int32 vid = 5;
+}
+
+message RSKStreamingStateChange {
+    int64 lts = 1;
+    int32 vid = 2;
+    string startId = 3;
+    string installId = 4;
+    int64 sequence = 5;
+    string version = 6;
+    string streamId = 7;
+    int32 state = 8;
+    string reason = 9;
+    string url = 10;
+}
+

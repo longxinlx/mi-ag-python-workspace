@@ -1,0 +1,2823 @@
+syntax = "proto3";
+
+package io.agora.pb.vosdk;
+
+// id = 3
+message Session {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string vk = 10;
+  string ver = 11;
+  int32 net1 = 12;
+  int32 net2 = 13;
+  string localIp = 14;
+  string ssid = 15;
+  string bssid = 16;
+  int32 siglevel = 17;
+  int32 rssi = 18;
+  int32 os1 = 19;
+  string did = 20;
+  int32 pnq = 21;
+  int32 lost = 22;
+  string info = 23;
+  string lsid = 24;
+  int32 channelMode = 25;
+  string cheVer = 26;
+  int32 sdkBuildNumber = 27;
+  int32 cheBuildNumber = 28;
+  string fsid = 29;
+  int32 channelProfile = 30;
+  int32 netSubType = 31;
+  int32 clientType = 32; // 1: Normal; 2:PSTN; 3: Recording; 14 ~ Transmission SDK
+  int32 appCategory = 33;
+  int32 clientRole = 34;
+  string installId = 35;
+  string stringUid = 36;
+  int32 jitter = 37;
+  string verExtraInfo = 38;
+  string cpuid = 39;
+  string configServiceVersion = 40;
+  string serviceId = 41;
+  int32 configElapsed = 42;
+  bool isABTestSuccess = 43;
+  // appType: 1: Cocos;  2: Unity; 3: Electron; 4: Flutter; 5: Unreal; 6: Xamarin; 7: APICloud
+  int32 appType = 44;
+  string udid = 45;
+  bool useAutVos = 47;
+  string extensionId = 49;
+  int32 areaCode = 50;
+  int32 proxyType = 53;
+  string extensionProvider = 54;
+  string pkgName = 56;
+  int32 useUIKit = 59;
+  int32 joinChannelConnId = 60;
+  string license = 61;
+  int32 domainLimit = 62;
+  int32 audioScenario = 63;
+  int32 useAppBuilder = 64;
+  string advancedAreaName = 65;
+  int32 useReceiverReport = 66;
+  string useFeatures = 67;
+  int32 isSimulator = 68;
+}
+
+// id = 4
+message Quit {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 dnsParsedTime = 10;
+}
+
+// id = 5
+message Vocs {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 ec = 10;
+  int32 sc = 11;
+  string serverIp = 12;
+  bool firstSuccess = 13;
+  int32 responseTime = 14;
+  repeated string serverIpList = 15;
+  string ssid = 16;
+  string bssid = 17;
+  string localWanIp = 18;
+  string ispName = 19;
+  bool minorIsp = 20;
+  int32 connectType = 21;
+  int32 apClientVersion = 22;
+  int32 apServerType = 23;
+  int32 longConnection = 24;
+  int32 receiveChannelTds = 25;
+  string advancedAreaName = 26;
+  int32 preAllocate = 27;
+}
+
+// id = 6
+message Vos {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 ec = 10;
+  int32 sc = 11;
+  string serverIp = 12;
+  repeated string vosList = 13;
+  bool firstSuccess = 14;
+  int32 channelCount = 15;
+  int32 responseTime = 16;
+  string ackedLoginServerIp = 17;
+  string wanIp = 18;
+  int32 throughVpn = 19; // 链接vos时是否通过了VPN（查本地路由表判断），1代表VPN，2代表直连，0没有意义
+  int32 isAutCrypto = 20;
+  int32 serverPort = 21;
+}
+
+// id = 7
+message FirstAudioPacketSent {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 codec = 10;
+}
+
+// id = 8
+message FirstAudioPacketReceived {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 codec = 10;
+}
+
+// id = 9
+message AudioSendingStopped {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  string reason = 10;
+}
+
+// id = 10
+message AudioDisabled {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+}
+
+// id = 11
+message AudioEnabled {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+}
+
+// id = 12
+message FirstVideoPacketSent {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 codec = 10;
+}
+
+// id = 13
+message FirstVideoPacketReceived {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 codec = 10;
+}
+
+// id = 14
+message VideoSendingStopped {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  string reason = 10;
+}
+
+// id = 15
+message VideoDisabled {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+}
+
+// id = 16
+message VideoEnabled {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+}
+
+// id = 17
+message PeerOnlineStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+}
+
+// id = 18
+message PeerOfflineStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  string reason = 10;
+}
+
+// id = 19
+message AudioMutePeerStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  bool muted = 10;
+}
+
+// id = 20
+message VideoMutePeerStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  bool muted = 10;
+}
+
+// id = 21
+message AudioMuteAllStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  bool muted = 10;
+}
+
+// id = 22
+message VideoMuteAllStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  bool muted = 10;
+}
+
+// id = 23
+message RenewToken {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  string token = 10;
+}
+
+// id = 24
+message RenewTokenRes {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  int32 res_code = 10;
+  string ticket = 11;
+  int32 serviceType = 12;
+}
+
+// id = 25
+message License {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string credential = 10;
+}
+
+// id = 94
+message P2pStunLoginSuccess {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string serverIp = 10;
+  int32 vid = 11;
+}
+
+// id = 95
+message P2pStunLoginFailed {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string serverIp = 11;
+  int32 code = 12;
+  int32 vid = 13;
+}
+
+// id = 96
+message P2pPeerTryTouch {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string peerLanIp = 10;
+  string peerWanIp = 11;
+}
+
+// id = 97
+message P2pPeerConnected {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string peerIp = 10;
+}
+
+// id = 98
+message P2pPeerDisconnected {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string reason = 10;
+}
+
+// id = 99
+message P2pStart {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 threshold = 10;
+  string label = 11;
+}
+
+// id = 100
+message P2pStop {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string reason = 10;
+}
+
+// id = 116
+message ViLocalFrame {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 height = 10;
+  int32 width = 11;
+}
+
+// id = 117
+message ViRemoteFrame {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int64 peerUid = 10;
+  int32 height = 11;
+  int32 width = 12;
+  string codec = 13;
+}
+
+// id = 118
+message Rating {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string vk = 10;
+  int32 rating = 11;
+  string description = 12;
+}
+
+// id = 119
+message ACodec {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string codec = 10;
+  int32 frames = 11;
+  int32 interleaves = 12;
+}
+
+// id = 120
+message Peer {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int64 peerUid = 10;
+}
+
+// id = 121
+message VideoBandwidthAggressiveLevel{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 level = 10;
+}
+
+// id = 122
+message AppSetMinPlayoutDelay{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 playoutDelay = 10;
+}
+
+// id = 123
+message AppSetVideoStartBitRate{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 startVideoBitRate = 10;
+}
+
+// id = 124
+message SendVideoPaced{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  bool isEnabled = 10;
+}
+
+// id = 125
+message ABTest{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+  string feature = 10;
+  string tag = 11;
+  string params = 12;
+  int32 isApplied = 13;
+}
+
+// id = 126
+message VideoInitialOptions{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  bool isSendVideoPacedEnabled = 10;
+  bool isVideoFecEnabled = 11;
+  int32 videoFecMethod = 12;
+  int32 localFallbackOption = 13;
+  int32 remoteFallbackOption = 14;
+  int32 deviceLevel = 15;
+  string gpuInfo = 16;
+}
+
+// id = 127
+message VqcStat{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 totalFrames = 10;
+  int32 averageScore = 11;
+  int32 llRatio = 12;
+  int32 hhRatio = 13;
+}
+
+// id = 128, network change information
+message NetworkInformation {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 networkType = 10;
+  int32 networkSubType = 11;
+  string localIp = 12;
+  string ssid = 13;
+  string bssid = 14;
+  int32 siglevel = 15;
+  int32 rssi = 16;
+}
+
+// id = 129
+message DnsParserInfo{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string domain = 10;
+  bool isSuccess = 11;
+  bool isCached = 12;
+  int32 timeConsumed = 13;
+  int32 errorCode = 14;
+  string ip1 = 15;
+  string ip2 = 16;
+  string ip3 = 17;
+}
+
+// id = 130
+message TimeConsumption{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string itemName = 10;
+  int32 itemId = 11;
+  int32 timeConsumed = 12;
+}
+
+// id = 131
+message ConnectionStateChange{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 oldState = 10;
+  int32 newState = 11;
+  int32 reason = 12;
+  int32 timeConsumed = 13;
+}
+
+// id = 132,   the event of video stream switch
+message SwitchVideoStream {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 eventType = 10;       // begin, end, timeout
+  int32 expectedStream = 11;  // expected stream type
+  int32 requestId = 12;       // request id of switch
+  int64 beginTs = 13;         // optional
+  int64 endTs = 14;           // optional
+}
+
+// id = 133
+message DeviceStateChange {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 deviceType = 10;
+  int32 StateType = 11;
+  string deviceId = 12;
+  string deviceName = 13;
+}
+
+// id = 10001 / 10118
+message AudioDiagState {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 diagType = 10;
+  int32 state = 11;
+  int32 category = 12;
+  int32 reason = 13;
+  string description = 14;
+  int32 interval = 15;
+}
+
+message CameraInfoItem {
+  string friendName = 1;
+  string deviceId = 2;
+  bool bUse = 3;
+}
+
+// id = 134
+message CameraInfo {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  repeated CameraInfoItem items = 10;
+}
+
+// id = 135
+message MaxVideoPayloadSet {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 maxPayload = 10;
+}
+
+// id = 136
+message FirstVideoFrameDecoded {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 width = 10;
+  int32 height = 11;
+}
+
+// id = 137
+message FirstVideoFrameDrawed {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 width = 10;
+  int32 height = 11;
+  int32 xtag = 12;
+  int32 viewSetupMs = 13;
+  int32 launchMs = 14;
+  int32 userAccountReqElapse = 15;
+  int32 vocsJoinedMs = 16;
+  int32 joinedMs = 17;
+  int32 muteMs = 18;
+  int32 peerJoinedMs = 19;
+  int32 firstPacketMs = 20;
+  int32 firstFrameMs = 21;
+  int32 decodeElapse = 22;
+  int32 renderFrameMs = 23;
+  int32 firstFrameType = 24;
+  int32 receivedKeyFrameNum = 25;
+  int32 receivedNonKeyFrameNum = 26;
+  int32 firstKeyFrameReceivedElapse = 27;
+  int32 streamType = 28;
+  int32 firstReport = 29;
+}
+
+// id = 138
+message VideoStreamSelected {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 streamType = 10; // VIDEO_STREAM_HIGH = 0, VIDEO_STREAM_LOW = 1
+  int32 FrameRateLevel = 12;  // 1 = low, 2 = middle, 3 = full
+}
+
+// id = 139
+message VideoStreamChangeRequest {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 streamType = 10; // VIDEO_STREAM_HIGH = 0, VIDEO_STREAM_LOW = 1
+}
+
+// id = 140
+message FirstDataPacketSent {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 transportType = 10; // reliable = 1 << 15, ordered = 1 << 14
+}
+
+// id = 141
+message FirstDataPacketReceived {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 transportType = 10; // reliable = 1 << 15, ordered = 1 << 14
+}
+
+// id = 142
+message Error {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 errorNo = 10;
+  string description = 11;
+}
+
+// id = 143
+message DefaultPeerStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 streamType = 10; // audio enalbed = 1, video low = 2, video high = 4
+}
+
+// id = 144
+message APEvent {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 ec = 10;
+  int32 sc = 11;
+  string serverIp = 12;
+  bool firstSuccess = 13;
+  int32 responseTime = 14;
+  repeated string serverIpList = 15;
+  string ssid = 16;
+  string bssid = 17;
+  string localWanIp = 18;
+  string ispName = 19;
+  bool minorIsp = 20;
+  int32 flag = 21;
+  string serviceName = 22;
+  string detail = 23;
+  int32 connectType = 24;
+  int32 apClientVersion = 25;
+  int32 apServerType = 26;
+  int32 longConnection = 27;
+  int64 apRequestTs = 28;
+}
+
+// id = 145
+message ReportStats {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 allTotalTxPackets = 10;
+  int32 allTotalAckedPackets = 11;
+  int32 allValidTxPackets = 12;
+  int32 allValidAckedPackets = 13;
+  int32 counterTotalTxPackets = 14;
+  int32 counterTotalAckedPackets = 15;
+  int32 counterValidTxPackets = 16;
+  int32 counterValidAckedPackets = 17;
+  int32 eventTotalTxPackets = 18;
+  int32 eventTotalAckedPackets = 19;
+  int32 eventValidTxPackets = 20;
+  int32 eventValidAckedPackets = 21;
+}
+
+// id = 146
+message Lbes {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 lbesUri = 10;
+  string url = 11;
+  string payload = 12;
+  int32 server_code = 13;
+  int32 code = 14;
+  string traceId = 15;
+  string command = 16;
+  string type = 17;
+}
+
+// id = 147
+message SignalingMsgStat {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 txMsgCount = 10;
+  int32 rxClientMsgCount = 11;
+  int32 rxSignalingMsgCount = 12;
+  int32 rxDualMsgCount = 13;
+}
+
+message Endpoint {
+  int32 ipv4 = 1;
+  int32 port = 2;
+  string serviceName = 3;
+}
+
+message Annotation {
+  int64 timestamp = 1;
+  string value = 2;
+  Endpoint endpoint = 3;
+}
+
+message BinaryAnnotation {
+  string key = 1;
+  string value = 2;
+  Endpoint endpoint = 3;
+}
+
+// id = 148
+message TrackSpan {
+  string traceId = 1;
+  string id = 2;
+  string parentId = 3;
+  string spanName = 4;
+  repeated Annotation annotations = 5;
+  repeated BinaryAnnotation binaryAnnotations = 6;
+  bool debug = 7;
+  int64 timestamp = 8;
+  int64 duration = 9;
+  int64 traceIdHigh = 10;
+}
+
+message RecordingMixModeProperty {
+  bool mixMode = 1;
+  int32 mixedVidoAudioMode = 2;
+  int32 mixHigh = 3;
+  int32 mixLow = 4;
+  int32 mixFps = 5;
+  int32 mixKbps = 6;
+}
+
+message RecordingJoinRes15Fields {
+  int64 reserve19 = 1;
+  int64 reserve20 = 2;
+  int64 reserve21 = 3;
+  int64 reserve22 = 4;
+  int64 reserve23 = 5;
+  int64 reserve24 = 6;
+  int64 reserve25 = 7;
+  int64 reserve26 = 8;
+  int64 reserve27 = 9;
+  int64 reserve28 = 10;
+  int64 reserve29 = 11;
+  int64 reserve30 = 12;
+  int64 reserve31 = 13;
+  int64 reserve32 = 14;
+  int64 reserve33 = 15;
+}
+
+// id = 149
+message RecordingJoin {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  RecordingMixModeProperty property = 10;
+  int32 minUdpPort = 11;
+  int32 maxUdpPort = 12;
+  int32 decodeAudioType = 13;
+  int32 decodeVideoType = 14;
+  int32 liveMode = 15;
+  int64 idle = 16;
+  int32 audioOnly = 17;
+  int32 videoOnly = 18;   // new insert
+  int32 syslogFacility = 19;
+  int32 streamType = 20;
+  int32 triggerMode = 21;
+  int32 language = 22;
+  RecordingJoinRes15Fields res15Fields = 23; //fixed reserve 15 fields
+}
+
+message RecordingLeaveRes5Fields {
+  int64 reserve102 = 1;
+  int64 reserve103 = 2;
+  int64 reserve104 = 3;
+  int64 reserve105 = 4;
+  int64 reserve106 = 5;
+}
+
+// id = 150
+message RecordingLeave {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 leavePathCode = 10;
+  RecordingLeaveRes5Fields res5Fields = 11; // fixed reserve 5 fields
+}
+
+message PrivilegeExpireInfo {
+  int32 privilege = 1;
+  int32 remainingTime = 2;
+  int64 expireTs = 3;
+}
+
+// id = 151
+message PPrivilegeWillExpire {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string token = 10;
+  repeated PrivilegeExpireInfo privilegeExpireInfos = 11;
+}
+
+// id = 152
+message LocalFallbackStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 status = 10;   // 0 - video high, 1 - video low, 2 - video muted
+}
+
+// id = 153
+message RemoteFallbackStatus{
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  int32 src = 10; // 0 - video high, 1 - video low, 2 - video muted
+  int32 dst = 11;  // 0 - video high, 1 - video low, 2 - video muted
+  int32 reason = 12;
+  int32 isVip = 13;
+}
+
+// id = 154
+message ApiExec {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  string ip = 5;
+  int64 uid = 6;
+  bool success = 7;
+  int64 elapse = 8;
+  int64 peer = 9;
+
+  string apiPayload = 10;
+  bool isCache = 11;
+  bool isNotificationSuppressed = 12;
+}
+
+// id = 156
+message WorkerEvent {
+    string sid = 1;
+    string cname = 2;
+    int64 cid = 3;
+    int64 lts = 4;
+    string ip = 5;
+    int64 uid = 6;
+    bool success = 7;
+    int64 elapse = 8;
+    int64 peer = 9;
+
+    string command = 10;
+    string actionType = 11;
+    string url = 12;
+    string payload = 13;
+    int32 server_code = 14;
+    int32 code = 15;
+    string traceId = 16;
+    int32 workerType = 17;
+    int32 responseTime = 18;
+    int64 requestId = 19;
+    int32 packIndex = 20;
+    bool requestByUser = 21;
+    string tid = 22;
+    string xRequestId = 24;
+    string edgeIp = 25;
+}
+
+// id = 157
+message P2PPenetration {
+    string sid = 1;
+    string cname = 2;
+    int64 cid = 3;
+    int64 lts = 4;
+    string ip = 5;
+    int64 uid = 6;
+    bool success = 7;
+    int64 elapse = 8;
+    int64 peer = 9;
+
+    int32 vid = 10;
+    repeated string stunIp = 11;
+}
+
+// id = 158
+message NetworkTestReport {
+    string sid = 1;
+    string cname = 2;
+    int64 cid = 3;
+    int64 lts = 4;
+    string ip = 5;
+    int64 uid = 6;
+    bool success = 7;
+    int64 elapse = 8;
+    int64 peer = 9;
+
+    int64 duration = 10;
+    repeated string successDomains = 11;
+    repeated string failedDomains = 12;
+    repeated int32 successUdpPorts = 13;
+    repeated int32 failedUdpPorts = 14;
+    int32 mtu = 15;
+    bool isTcpAvailable = 16;
+}
+
+message CommonIndex {
+  string index1 = 1;
+  string index2 = 2;
+  string index3 = 3;
+}
+
+// id = 159
+message CustomizedData {
+    int32 eventType = 1;
+    string sid = 2;
+    string avcUid = 3;
+    int32 netType = 4;
+    bool success = 5;
+    int32 elapsed = 6;
+    string requestType = 7;
+    int32 deviceType = 8;
+    int32 osType = 9;
+    string osVersion = 10;
+    string appVersion = 11;
+    int64 lts = 12;
+    int32 errorCode = 13;
+    string reservedValue = 14;
+    CommonIndex index = 15;
+    int32 elapse = 16;
+    int32 ec = 17;
+}
+
+// id = 160
+message APWorkerEvent {
+    string sid = 1;
+    string cname = 2;
+    int64 cid = 3;
+    int64 lts = 4;
+    string ip = 5;
+    int64 uid = 6;
+    bool success = 7;
+    int64 elapse = 8;
+    int64 peer = 9;
+
+    int32 ec = 10;
+    int32 sc = 11;
+    string serverIp = 12;
+    bool firstSuccess = 13;
+    int32 responseTime = 14;
+    string serviceName = 15;
+    string response_detail = 16;
+}
+
+// id = 192
+message LogUploadStart {
+    string sid = 1;
+    string installId = 2;
+    string requestId = 3;
+    int64 lts = 4;
+    int32 sessionId = 5;
+}
+
+// id = 193
+message LogUploadEnd {
+    string sid = 1;
+    string installId = 2;
+    string requestId = 3;
+    int64 lts = 4;
+    int32 sessionId = 5;
+    int32 code = 6;
+    int32 elapsed = 7;
+}
+
+// id = 194
+message FirstJoinVosSuccess {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string serverIp = 7;
+  int32 responseTime = 8;
+  string ackedLoginServerIp = 9;
+  string wanIp = 10;
+  string configServiceVersion = 11;
+  int32 configElapsed = 12;
+  bool isABTestSuccess = 13;
+  bool isStoreParamsSuccess = 14;
+  int32 storeParamsElapsed = 15;
+  int32 audioScenario = 16;
+}
+
+// id = 224
+message VideoProfile {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+
+  int32 width = 7;
+  int32 height = 8;
+  int32 frameRate = 9;
+  int32 bitrate = 10;
+  int32 maxBitrate = 11;
+  int32 saveVideoBitrate = 12;
+}
+
+// id = 10139
+message VideoProfileAutoAdjust {
+  int64 lts = 1;         // 时间戳，必须存在
+  int32 vid = 2;         // vid 信息
+  string sid = 3;        // session id
+  string cname = 4;      // channel name
+  int64 cid = 5;         // channel id
+  int64 uid = 6;         // local user id
+  int64 elapse = 7;      // 请求完成的耗时
+  string VideoProfileConfig = 8; // 配置VideoProfileActual
+  string VideoProfileActual = 9; // 实际VideoProfileActual
+}
+
+// id = 10086
+message VideoProfileLow {
+  int64 lts = 1;         // 时间戳，必须存在
+  int32 vid = 2;         // vid 信息
+  string sid = 3;        // session id
+  string cname = 4;      // channel name
+  int64 cid = 5;         // channel id
+  int64 uid = 6;         // local user id
+  int64 elapse = 7;      // 请求完成的耗时
+  int32 width = 8;       // 小流profile的宽
+  int32 height = 9;      // 小流profile的高
+  int32 framerate = 10;  // 小流profile帧率
+  int32 bitrate = 11;    // 小流profile码率
+}
+
+// id = 9108
+message DeviceLevel {
+  int64 lts = 1; // timestamp
+  int32 devicelevel = 2; //	0:invalid; 10:low; 20:medium; 30:high. other number is reserve.
+  int32 vid = 3;
+  string devtype = 4; // device model
+  int32 devscore = 5; // device score
+  string sid = 6;
+  string cname = 7;
+  int64 cid = 8;
+  int64 uid = 9;
+  int64 elapse = 10; // elapse
+  string cpuName = 11;
+}
+
+// id = 9477
+message CaptureMode {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid 信息
+  string sid = 3; // session id
+  string cname = 4; // 频道名字
+  int64 uid = 5; // 本端用户id
+  int64 cid = 6; // 频道id
+  int64 elapse = 7; // 距离加入频道耗时
+  int32 mode = 8; // 相机采集为1,屏幕采集为2,窗口采集为3,放大器模式为4。0是invalid默认是相机
+  int32 platformid = 9; // 平台id, window:1 mac:2 ios:3 android:4
+  string type = 10; // 上报采集技术类型
+
+  /*
+   * 在mode的前提下；采集场景。1是文档，2是游戏，3是视频，4是远程控制桌面；
+   * 如果mode是相机，0是invalid代表相机，如果mode是屏幕共享中的一个，0表示默认文档模模式
+   */
+  int32 scene = 11;
+  int32 policy = 12; // 采集策略:画质优先、流畅优先、画质流畅均衡
+}
+
+// id = 10087
+message VideoCodecVersion {
+  int64 lts = 1;
+  int32 vid = 2;
+  string sid = 3;
+  string cname = 4;
+  int64 cid = 5;
+  int64 uid = 6;
+  int64 elapse = 7;
+  string a264 = 8;
+  string vqa = 9;
+}
+
+// id = 263
+message RemoteVideoState {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 errorcode = 7;
+  int64 state = 8;
+  int64 peeruid = 9;
+}
+
+// id = 265
+message LocalVideoState {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int32 errorcode = 6;
+  int64 state = 7;
+}
+
+// id = 10000
+message UserAnalytics {
+    string sid = 1;
+    int64 lts = 2;
+    string reportId = 3;
+    string category = 4;
+    string event = 5;
+    string label = 6;
+    int64 value = 7;
+}
+
+// id = 382
+message XLAPeerFirstAudioFrame {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 elapse = 5;
+  int64 peeruid = 6;
+  int64 peerPublishDuration = 7;
+  int64 joinChannelSuccessElapse = 8;
+  bool availablePublish = 9;
+  int64 firstDrawnElapse = 10;
+  int64 uid = 11;
+  bool firstDrawAfterJoinChannel = 12;
+  int32 launchMs = 13;
+  int32 joinedMs = 14;
+  int32 recvedMs = 15;
+  int32 muteMs = 16;
+  int64 playoutLatency = 17;
+}
+
+// id = 383
+message XLAPeerFirstVideoFrame {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 elapse = 5;
+  int64 peeruid = 6;
+  int64 peerPublishDuration = 7;
+  int64 joinChannelSuccessElapse = 8;
+  bool availablePublish = 9;
+  int64 firstDrawnElapse = 10;
+  int64 uid = 11;
+  bool firstDrawAfterJoinChannel = 12;
+  int32 launchMs = 13;
+  int32 joinedMs = 14;
+  int32 recvedMs = 15;
+  int32 muteMs = 16;
+  int32 firstDrawnMs = 17;
+  int32 vocsJoinedMs = 18;
+  int32 peerJoinedMs = 19;
+  int32 viewSetupMs = 20;
+  int32 firstPacketMs = 21;
+  int32 firstFrameMs = 22;
+  int32 renderFrameMs = 23;
+  int32 xtag = 24;
+  int32 userAccountReqElapse = 25;
+  int32 firstFrameType = 26;
+  int32 receivedKeyFrameNum = 27;
+  int32 receivedNonKeyFrameNum = 28;
+  int32 firstKeyFrameReceivedElapse = 29;
+  int32 streamType = 30;
+  int32 elapsedFromCustomerTickToJoin = 31;
+}
+
+// id = 384
+message XlaPublishAudioTimeout {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 timeout = 6;
+  int64 elapse = 7;
+}
+
+// id = 401
+message XlaPublishVideoTimeout {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 timeout = 6;
+  int64 elapse = 7;
+}
+
+// id = 404
+message XlaFirstAudioFrameTimeout {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 peeruid = 6;
+  int32 timeout = 7;
+  int64 elapse = 8;
+  int64 peerPublishDuration = 9;
+  int64 joinChannelSuccessElapse = 10;
+  bool availablePublish = 11;
+  bool firstDrawAfterJoinChannel = 12;
+}
+
+// id = 405
+message XlaFirstVideoFrameTimeout {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 peeruid = 6;
+  int32 timeout = 7;
+  int64 elapse = 8;
+  int64 peerPublishDuration = 9;
+  int64 joinChannelSuccessElapse = 10;
+  bool availablePublish = 11;
+  bool firstDrawAfterJoinChannel = 12;
+}
+
+// id = 406
+message XlaJoinChannelTimeout {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 timeout = 6;
+  int64 elapse = 7;
+}
+
+// id = 423
+message SurveyEvent {
+  int64 lts = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 uid = 4;
+  string action = 5;
+  string url = 6;
+  int32 localcode = 7;
+  int32 servercode = 8;
+  string rtmaccount = 9;
+  string ipaddress = 10;
+  string description = 11;
+  string sid = 12;
+  string eventreason = 13;
+  int64 elapse = 14;
+}
+
+// id = 424
+message TransportProxyChanged {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 elapse = 5;
+  int32 oldType = 6;
+  int32 newType = 7;
+  string server = 8;
+  int32 changeTypeReason = 9;  // proxy changed reason, unused if is 0
+  string realWanIp = 10;  // the real wan ip of user, not proxy
+}
+
+// id = 489
+message VideoCaptureType {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 capturetype = 6;
+}
+
+// id = 496
+message SDKInBackground {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 stat = 6;
+}
+
+// id = 499
+message VideoRendererMode {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 peeruid = 6;
+  int32 mode = 7;
+}
+
+// id = 515
+message VideoEncoderGPUID {
+  int64 lts = 1;
+  string sid = 3;
+  string cname = 4;
+  int64 cid = 5;
+  int64 uid = 6;
+  string gpuid = 7;
+}
+
+// id = 345
+message CrashEvent {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 crashVer = 7;
+  int32 dmpType = 8;
+  int64 lstLts = 9;
+  int64 lstCrashAddr = 10;
+  int64 lstLdBegin = 11;
+  int64 lstLdEnd = 12;
+  string lstServiceId = 13;
+  string lstSessionId = 14;
+  string lstChannelName = 15;
+  string lstSdkVer = 16;
+  int32 lstNetwork = 17;
+  int32 lstChannelMode = 18;
+  int32 lstChannelProfile = 19;
+  int32 lstClientType = 20;
+  int32 lstClientRole = 21;
+  string lstCrashUid = 22;
+  int32 lstBuildNo = 23;
+  bool isDumpFile = 24;
+  int32 os = 25;
+  string deviceid = 26;
+  string installid = 27;
+  string appid = 28;
+  int32 cpuarch = 29;
+  int32 channelCount = 30;
+  int32 appType = 31;
+  string moduleName = 32;
+  int64 moduleBuildNo = 33;
+  int32 isCallBackThreadException = 34;  // 是否用户回调线程发生crash或anr异常，1表示回调线程
+}
+
+// id = 341
+message SubscribeAudioStateChanged {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 peeruid = 6;
+  int32 oldstate = 7;
+  int32 newstate = 8;
+  int64 elapse = 9;
+  int64 elapseSinceLastState = 10;
+}
+
+// id = 342
+message SubscribeVideoStateChanged {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 peeruid = 6;
+  int32 oldstate = 7;
+  int32 newstate = 8;
+  int64 elapse = 9;
+  int64 elapseSinceLastState = 10;
+}
+
+// id = 343
+message PublishAudioStateChanged {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 peeruid = 6;
+  int32 oldstate = 7;
+  int32 newstate = 8;
+  int64 elapse = 9;
+  int64 elapseSinceLastState = 10;
+}
+
+// id = 344
+message PublishVideoStateChanged {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 peeruid = 6;
+  int32 oldstate = 7;
+  int32 newstate = 8;
+  int64 elapse = 9;
+  int64 elapseSinceLastState = 10;
+}
+
+// id = 614
+message VCodec {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 vcodec = 7;
+  int32 hardware = 8;
+  int64 peeruid = 9;
+}
+
+// id = 502
+message Service {
+  int64 lts = 1;
+  string sid = 2;
+  int32 os = 3;
+  string deviceId = 4;
+  string installId = 5;
+  string sdkVer = 6;
+  bool enableXdump = 7;
+  bool enableXdumpFile = 8;
+  bool enableXdumpUpload = 9;
+  bool configVideo = 10;
+  string appId = 11;
+  string serviceId = 12;
+  int32 sdkBuildNumber = 13;
+  string cheVer = 14;
+  int32 cheBuildNumber = 15;
+  string configServiceVersion = 16;
+  int32 networkType = 17;
+  int32 subNetworkType = 18;
+  int32 rssi = 19;
+  int32 siglevel = 20;
+}
+
+// id = 746
+message VideoCaptureOutputType {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 outputType = 6;
+  int64 elapse = 7;
+}
+
+// id = 501
+message CameraFacing {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 facing = 6;
+  bool hasfront = 7;
+  bool hasback = 8;
+}
+
+// id = 10148
+message CameraCharacteristicProfile {
+  int64 lts = 1;
+  int32 vid = 2;
+  string sid = 3;
+  string cname = 4;
+  int64 cid = 5;
+  int64 uid = 6;
+  int64 elapse = 7;
+  int32 id = 8;
+  int32 isTexture = 9;
+  int32 textureCopy = 10;
+  int32 pqFirst = 11;
+  int32 templateType = 12;
+  int32 noiseReduce = 13;
+  int32 faceFocusing = 14;
+  int32 whiteBalance = 15;
+  string lowLevelCamera = 16;
+  string hardwareLevel = 17;
+}
+
+// id = 774
+message VideoBeautyParam {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 beautyVersion = 7;
+  int32 smoothness = 8;
+  int32 lightness = 9;
+  int32 redness = 10;
+  int32 contrast = 11;
+  int32 sharpness = 12;
+}
+
+message QoEDropInfo {
+  int32 errorCode = 1;
+  int32 dropNum = 2;
+  int64 ts = 3;
+}
+
+message VideoTimestampExceptionInfo {
+  int64 exception_timestamp = 1;
+  int32 exception_type = 2;
+  int32 timestamp_type = 3;
+}
+
+// id = 9041
+message VideoAvailabilityIndicator {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 level = 7;
+  int32 module = 8;
+  int32 code = 9;
+  int64 peerUid = 10;
+  int32 extra = 11;
+  repeated QoEDropInfo extra2 = 12;
+  repeated VideoTimestampExceptionInfo ts_exception_info = 13;
+}
+message Capabilities {
+  int64 lts = 1;
+  int32 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int32 negotied = 6;
+  string capabilities = 7;
+  string sid = 8;
+  int64 elapse = 9;
+}
+
+message VideoAlgorithmVerify {
+  int64 lts = 1;
+  int32 vid = 2;
+  int32 processstate = 3;
+  int32 singlemaxcost = 4;
+  int32 avgcost = 5;
+  int32 singlemaxsimilarity = 6;
+  int32 avgsimilarity = 7;
+  string installid = 8;
+}
+
+// id = 709
+message GmeEnterRoom {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  int32 teamId = 8;
+  string teamCname = 9;
+}
+
+// id = 712
+message GmeCreateRoom {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+}
+
+// id = 713
+message GmeCreateRoomResult {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  int32 errorCode = 8;
+}
+
+// id = 714
+message GmeConStateChange {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  int32 rtmConState = 8;
+  int32 createGameRoomState = 9;
+  int32 gameConState = 10;
+  int32 lastGameConState = 11;
+}
+
+// id = 715
+message GmeSendMsgFail {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  int32 rtmConState = 8;
+  int32 lastError = 9;
+  int32 errorCount = 10;
+}
+
+// id = 716
+message GmeLostSync {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  int32 teammateCount = 8;
+  int64 offlineTime = 9;
+  int32 gameConState = 10;
+  int32 rtmConState = 11;
+  int32 createGameRoomState = 12;
+}
+
+// id = 717
+message GmeGetSync {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  int64 offlineTime = 8;
+}
+
+// id = 718
+message GmeExitRoom {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  int32 teamId = 8;
+  string teamCname = 9;
+  int32 gameConState = 10;
+}
+
+// id = 719
+message GmeJoinTeamChannel {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  string teamCname = 8;
+}
+
+// id = 720
+message GmeLeaveTeamChannel {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  string teamCname = 8;
+}
+
+// id = 721
+message GmeJoinTeamChannelResult {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string rtmUserId = 7;
+  string teamCname = 8;
+  int32 errorCode = 9;
+}
+
+// id = 9055
+message VideoSidStreamQoeScore {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid信息
+  string sid = 3; // session id
+  string cname = 4; //  频道名称
+  int64 cid = 5; // 频道id
+  int64 uid = 6; // 本端用户id
+  int64 elapse = 7; //  距离加入频道耗时
+  string uuid = 8; // 唯一标识用于关联VideoUidQoeScore
+  int64 peeruid = 9; // 远端uid
+  int32 frozenScore = 10; // 卡顿分数
+  int32 delayScore = 11; // 延时分数
+  int32 definitionScore = 12; // 清晰度分数
+  int32 videoQoeScore = 13; // 多维度视频汇聚分数
+  int32 onlinetimepeeruid = 14; // peeruid在线时长
+  int32 onlinetimeall = 15; // 通话总时长
+  int32 audioScore = 16;  // 音频分数
+  int32 syncScore = 17;  // 音画同步分数
+  int32 qoeScore = 18; // 多维度综合汇聚分数
+}
+
+// id = 9056
+message VideoUidQoeScore {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vendor id
+  string sid = 3; // session id
+  string cname = 4; // 频道名称
+  int64 cid = 5; // 频道id
+  int64 uid = 6; // 本端用户id
+  int64 elapse = 7; // 距离加入频道耗时
+  string uuid = 8; // 唯一标识用于关联VideoSidStreamQoeScore
+  int32 sidMultiStreamFrozenScore = 9; // sid多流卡顿分数
+  int32 sidMultiStreamDelayScore = 10; // sid多流时延分数
+  int32 sidMultiStreamdefinitionScore = 11; // sid清晰度分数
+  int32 sidTotalVideoQoe = 12; // sid多维度综合分数
+  int32 uidfrozenScore = 13; // uid卡顿分数
+  int32 uiddelayScore = 14; // uid延时分数
+  int32 uiddefinitionScore = 15; // uid清晰度分数
+  int32 uidTotalVideoQoe = 16; // uid多维度综合分数
+  int32 uidaudioScore = 17; // 音频分数
+  int32 uidsyncScore = 18; // 音画同步分数
+  int32 uidvideoQoeScore = 19; // 多维度视频汇聚分数
+}
+
+// id = 9668
+message RSDecodeTimeResult {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 DecodeLevel1 = 7;
+  int32 DecodeLevel2 = 8;
+  int32 DecodeLevel3 = 9;
+  int32 DecodeLevel4 = 10;
+  int32 DecodeLevel5 = 11;
+  int32 DecodeLevel6 = 12;
+  int32 DecodeLevel7 = 13;
+  int32 DecodeLevel8 = 14;
+  int32 DecodeLevel9 = 15;
+  int32 DecodeLevel10 = 16;
+}
+
+// id = 726
+message ConfigProfile {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 ChannelProfile = 7;
+  int32 ClientRole = 8;
+  int32 AudioMuteSelf = 9;
+  int32 AudioMutePeers = 10;
+  int32 VideoMuteSelf = 11;
+  int32 VideoMutePeers = 12;
+  string paramSmoothRender = 13;
+  string paramPlayoutDelay = 14;
+  string paramVideoCodec = 15;
+  string paramCamera = 16;
+  string paramNetwork = 17;
+  string paramAudio = 18;
+  string paramHarq = 19;
+}
+
+// id = 9404
+message NetworkInterfacesChange {
+  int64 lts = 1;
+  int64 elapse = 3;
+  int32 adjust = 5;
+  string ifconfig = 6;
+  int32 vid = 7;
+  int64 uid = 8;
+  int64 cid = 9;
+  string sid = 10;
+  int32 vpnStatus = 11;
+}
+
+// id = 9686
+message VideoHWCodecSpec {
+  int64 lts = 1;
+  int32 vid = 2;
+  string codecName = 3;
+  string GPUVersion = 4;
+  string EncodeCapacity = 5;
+  string DecodeCapacity = 6;
+  int32 codecType = 7;
+  int32 codecNum = 8;
+  int32 platformid = 9;
+  string maxResolution = 10;
+  int32 EncodeMaxLevel = 11;
+  string sid = 12;
+  string deviceid = 13;
+  int64 cid = 14;
+  int64 uid = 15;
+}
+
+//id = 727
+message ImageTakenStat {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 reqTotalCount = 7;
+  int32 reqOverflowCount = 8;
+  int32 reqFailCount = 9;
+  int32 respSuccessCount = 10;
+  int32 respFailCount = 11;
+  int32 scaledWidth = 12;
+  int32 scaledHeight = 13;
+}
+// id = 9175
+message ImageTaken {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  string requestId = 7;
+  int64 snapShotTime = 8;
+  int32 inspectCallback = 9;
+  int32 deviceInspect = 10;
+  int32 cloudInspect = 11;
+  int32 scoreUpload = 12;
+  int32 vid = 13;
+}
+// id = 9176
+message ImageModerationApiCallback {
+  int64 lts = 1;
+  string sid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 vid = 7;
+  string requestId = 8;
+  int32 deviceInspect = 9;
+  int32 cloudInspect = 10;
+  int32 scene = 11;
+  int32 snapShotElapse = 12;
+  int32 modelElapse = 13;
+  int32 inspectElapse = 14;
+}
+
+// id = 9185
+message CmrStartChannelRelayRequest {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 requestId = 5;
+  int32 channelRelayId = 6;
+  string destChannel = 7;
+  int32 channelCount = 8;
+  string sid = 9;
+  string uid = 10;
+}
+
+// id = 9186
+message CmrStartChannelRelayResponse {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 requestId = 5;
+  string sid = 9;
+  string uid = 10;
+  int32 channelRelayId = 11;
+  int32 requestSuccess = 12;
+  int32 code = 13;
+}
+
+// id = 9187
+message CmrUpdateChannelRelayRequest {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 requestId = 5;
+  int32 channelRelayId = 6;
+  string destChannel = 7;
+  int32 channelCount = 8;
+  string sid = 9;
+  string uid = 10;
+}
+
+// id = 9188
+message CmrUpdateChannelRelayResponse {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 requestId = 5;
+  string sid = 6;
+  string uid = 7;
+  int32 channelRelayId = 8;
+  int32 requestSuccess = 9;
+  int32 code = 10;
+}
+
+// id = 9189
+message CmrStopChannelRelayRequest {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 requestId = 5;
+  int32 channelRelayId = 6;
+  string sid = 9;
+  string uid = 10;
+}
+
+// id = 9190
+message CmrStopChannelRelayResponse {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 requestId = 5;
+  string sid = 6;
+  string uid = 7;
+  int32 channelRelayId = 8;
+  int32 requestSuccess = 9;
+  int32 code = 10;
+}
+
+// id = 9191
+message CmrChannelMediaRelayEvent {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 channelRelayId = 6;
+  string sid = 9;
+  string uid = 10;
+  int32 code = 11;
+  string channel = 12;
+}
+
+// id = 9192
+message CmrChannelRelayState {
+  int64 lts = 1;
+  int64 vid = 2;
+  string cname = 3;
+  int64 cid = 4;
+  int32 channelRelayId = 5;
+  string sid = 6;
+  string uid = 7;
+  int32 code = 8;
+  string channel = 9;
+  int32 state = 10;
+  string reason = 11;
+}
+
+// id = 9937
+message IpstackResult {
+  int64 lts = 1;
+  int32 vid = 2;
+  string sid = 3;
+  string cname = 4;
+  int64 cid = 5;
+  int64 uid = 6;
+  string nat64prefix = 7;
+  int32 detectedIpStack = 8;
+  int32 preferredIpStack = 9;
+  int32 isIpv6Only = 10;
+  int64 elapse = 11;
+}
+
+message Item {
+  int32 value = 1;
+  int32 tsDelta = 2;
+}
+message DimId {
+  string sid = 1;
+  int32 vid = 2;
+}
+
+// id = 9938
+message AudioUplinkDetailCost {
+  int64 lts = 1;
+  Item dataReady2formatFrame = 2;
+  Item formatFrame2encoderQueue = 3;
+  Item encoderQueue2preEncoder = 4;
+  Item preEncoder2encoder = 5;
+  Item encoder2sendQueue = 6;
+  Item sendQueue2readySend = 7;
+  Item readySend2vosSend = 8;
+  Item dataReady2vosSend = 9;
+  DimId dimDelay = 10;
+}
+
+// id = 9720
+message MultiPathState {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 9; // vid 信息
+  string sid = 10; // session id
+  string cname = 11; // 频道名称
+  int64 cid = 12; // 频道id
+  int64 uid = 13; // 本端用户id
+  int64 elapse = 14; // 距离加入频道毫秒数
+  int32 errorCode = 15; // 0，正常。1，私有参数未开启。2，可用网卡数量不足。3，检测到VPN。4，app没有申请修改网络权限。5，申请网络未返回。6，socket报错后退出multipath。7，CreatePath返回空。
+  string errorMsg = 16; // 详细错误描述和补充。
+}
+
+message Dimension {
+  string installId = 1;
+  string localIp = 2;
+  string pubIp = 3;
+  string ver = 4;
+  string sid = 5;
+  int32 vid = 6;
+  int32 net = 7;
+}
+
+// id = 9658
+message MultiPath1Metric6s {
+  int64 lts = 1; // 时间戳，必须存在
+  Dimension dim = 2; // path 元信息
+  Item upBandwidthEs = 3; // 上行带宽估计，单位kbps
+  Item downBandwidthEs = 4; // 下行带宽估计，单位kbps
+  Item upPadding = 5; // 上行填充，单位kbps
+  Item downPadding = 6; // 下行填充，单位kbps
+  Item uplinkMTU = 7; // 上行MTU，单位byte
+  Item downlinkMTU = 8; // 下行MTU，单位byte
+  Item upQueueTime = 9; // 上行排队时间，单位ms
+  Item downQueueTime = 10; // 下行排队时间，单位ms
+  Item upJitter95 = 11; // 上行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item downJitter95 = 12; // 下行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item roundTripJitter95 = 13; // 整个网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item smoothedRTT = 14; // RTT平滑，单位ms
+  Item minRTT = 15; // 统计周期内，链路最小的RTT大小，单位ms
+  Item uplinkLoss = 16; // 上行丢包，单位百分比乘100
+  Item downlinkLoss = 17; // 下行丢包，单位百分比乘100
+}
+
+// id = 9663
+message MultiPath2Metric6s {
+  int64 lts = 1; // 时间戳，必须存在
+  Dimension dim = 2; // path 元信息
+  Item upBandwidthEs = 3; // 上行带宽估计，单位kbps
+  Item downBandwidthEs = 4; // 下行带宽估计，单位kbps
+  Item upPadding = 5; // 上行填充，单位kbps
+  Item downPadding = 6; // 下行填充，单位kbps
+  Item uplinkMTU = 7; // 上行MTU，单位byte
+  Item downlinkMTU = 8; // 下行MTU，单位byte
+  Item upQueueTime = 9; // 上行排队时间，单位ms
+  Item downQueueTime = 10; // 下行排队时间，单位ms
+  Item upJitter95 = 11; // 上行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item downJitter95 = 12; // 下行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item roundTripJitter95 = 13; // 整个网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item smoothedRTT = 14; // RTT平滑，单位ms
+  Item minRTT = 15; // 统计周期内，链路最小的RTT大小，单位ms
+  Item uplinkLoss = 16; // 上行丢包，单位百分比乘100
+  Item downlinkLoss = 17; // 下行丢包，单位百分比乘100
+}
+
+// id = 9664
+message MultiPath3Metric6s {
+  int64 lts = 1; // 时间戳，必须存在
+  Dimension dim = 2; // path 元信息
+  Item upBandwidthEs = 3; // 上行带宽估计，单位kbps
+  Item downBandwidthEs = 4; // 下行带宽估计，单位kbps
+  Item upPadding = 5; // 上行填充，单位kbps
+  Item downPadding = 6; // 下行填充，单位kbps
+  Item uplinkMTU = 7; // 上行MTU，单位byte
+  Item downlinkMTU = 8; // 下行MTU，单位byte
+  Item upQueueTime = 9; // 上行排队时间，单位ms
+  Item downQueueTime = 10; // 下行排队时间，单位ms
+  Item upJitter95 = 11; // 上行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item downJitter95 = 12; // 下行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item roundTripJitter95 = 13; // 整个网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item smoothedRTT = 14; // RTT平滑，单位ms
+  Item minRTT = 15; // 统计周期内，链路最小的RTT大小，单位ms
+  Item uplinkLoss = 16; // 上行丢包，单位百分比乘100
+  Item downlinkLoss = 17; // 下行丢包，单位百分比乘100
+}
+
+// id = 9665
+message MultiPath4Metric6s {
+  int64 lts = 1; // 时间戳，必须存在
+  Dimension dim = 2; // path 元信息
+  Item upBandwidthEs = 3; // 上行带宽估计，单位kbps
+  Item downBandwidthEs = 4; // 下行带宽估计，单位kbps
+  Item upPadding = 5; // 上行填充，单位kbps
+  Item downPadding = 6; // 下行填充，单位kbps
+  Item uplinkMTU = 7; // 上行MTU，单位byte
+  Item downlinkMTU = 8; // 下行MTU，单位byte
+  Item upQueueTime = 9; // 上行排队时间，单位ms
+  Item downQueueTime = 10; // 下行排队时间，单位ms
+  Item upJitter95 = 11; // 上行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item downJitter95 = 12; // 下行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item roundTripJitter95 = 13; // 整个网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item smoothedRTT = 14; // RTT平滑，单位ms
+  Item minRTT = 15; // 统计周期内，链路最小的RTT大小，单位ms
+  Item uplinkLoss = 16; // 上行丢包，单位百分比乘100
+  Item downlinkLoss = 17; // 下行丢包，单位百分比乘100
+}
+
+// id = 9666
+message MultiPath5Metric6s {
+  int64 lts = 1; // 时间戳，必须存在
+  Dimension dim = 2; // path 元信息
+  Item upBandwidthEs = 3; // 上行带宽估计，单位kbps
+  Item downBandwidthEs = 4; // 下行带宽估计，单位kbps
+  Item upPadding = 5; // 上行填充，单位kbps
+  Item downPadding = 6; // 下行填充，单位kbps
+  Item uplinkMTU = 7; // 上行MTU，单位byte
+  Item downlinkMTU = 8; // 下行MTU，单位byte
+  Item upQueueTime = 9; // 上行排队时间，单位ms
+  Item downQueueTime = 10; // 下行排队时间，单位ms
+  Item upJitter95 = 11; // 上行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item downJitter95 = 12; // 下行网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item roundTripJitter95 = 13; // 整个网络中，把所有的延迟时间减去最小延迟时间后，从小到大排序，取95分位的值，单位ms
+  Item smoothedRTT = 14; // RTT平滑，单位ms
+  Item minRTT = 15; // 统计周期内，链路最小的RTT大小，单位ms
+  Item uplinkLoss = 16; // 上行丢包，单位百分比乘100
+  Item downlinkLoss = 17; // 下行丢包，单位百分比乘100
+}
+
+// id = 9969
+message PublishDataChannel {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid 信息
+  string sid = 3; // session id
+  int64 cid = 4; // 频道ID
+  string cname = 5; // 频道名称
+  string userId = 6; // 本地用户id
+  int64 elapse = 7; // 从加入频道到事件发生的耗时
+  string meta = 8; // meta data
+  int32 dataChannelId = 9; // 数据频道id
+  int64 uid = 10; // 本地UID
+  int64 qosProfile = 11; // qos的profile，用bit位表示不同信息
+}
+
+// id = 9973
+message UnpublishDataChannel {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid 信息
+  string sid = 3; // session id
+  int64 cid = 4; // 频道ID
+  string cname = 5; // 频道名称
+  string userId = 6; // 本地用户string id
+  int64 uid = 7; // 本地用户 uid
+  int64 elapse = 8; // 从加入频道到事件发生的耗时
+  string meta = 9; // meta data
+  int32 dataChannelId = 10; // 数据频道id
+}
+
+// id = 10017
+message HeavyReconnection {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid 信息
+  int32 reason = 3; // 发生大重连的原因。主要触发原因如下： 1.场景切换至RTC 2.场景切换至实时合唱 3.场景切换至极速直播 4.可用的vos均已连接超时 5.实时合唱场景切换至主播 6.实时合唱场景切换至观众 7.SDK网络切换 8.SDK transport切换 9.multiIp 10.ticket无效 11.renewToken后重新连接 12.请求的vos类型不匹配（发生在配置下发更改了vos/vos_aut后） 13.未知原因
+  string sid = 4; // session id信息
+  string cname = 5; // 频道名
+  int64 cid = 6; // channel id
+  int64 uid = 7; // user id
+  int64 elapse = 8; // join channel至今elapsed的时间
+}
+
+// id = 9921
+message MarketPlaceContentInspectApi {
+  int64 lts = 1; // 时间戳
+  string sid = 2; // session id
+  string cname = 3; // 频道名
+  int64 cid = 4; // 频道id
+  int64 uid = 5; // 用户id
+  int64 elapse = 6; // 距离加入频道时间
+  string requestId = 7; // 请求id
+  int32 result = 8; // 请求结果及失败原因  0.没有失败 100.功能本身没有开启 20.没有加入频道 21.没有发流的频道 22.视频引擎关闭 23.视频mute 26.还未连接edge
+  int32 connectionType = 9; // Edge连接事件类型 0.invalid 1.ApRequest 2WmRequest 3.WmResponse 4.WorkerRequest 5.WorkerResponse 9.ApiCall
+  int32 subRequestId = 10; // 序列号
+  int32 service = 11; // 服务类型
+  int32 apiElapse = 12; // 距api调用所经过的时间
+  int32 vid = 13; // 客户id
+  string serverIp = 14; // 服务ip
+}
+
+
+// id = 9918
+message MarketPlaceImageTaken {
+  int64 lts = 1; // 时间戳
+  string sid = 2; // session id
+  string cname = 3; // 频道名
+  int64 cid = 4; // 频道id
+  int64 uid = 5; // 本端用户id
+  int64 elapse = 6; // 距离加入频道时间
+  string requestId = 7; // 请求id
+  int64 snapShotTime = 8; // 开始截图时间戳
+  int32 vid = 9; // 客户id
+  string fileId = 10; // 图片id
+  int32 snapShotElapse = 11; // 截图耗时
+  int32 result = 12; // 截图结果及失败原因 0.截图成功 1.jpeg编码失败 2.截图超时 3.图片内存分配失败 4.jpeg编码器初始化失败（大概率是因为使用了不支持jepg的ffmpeg） 5.不支持的视频格式
+}
+
+// id = 10029
+message RtcInvocationGroup {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid 信息
+  string serviceId = 3; // service id
+  string sid = 4; // session id。 频道前操作和全局可能为空
+  string ver = 5; // version
+  repeated RtcInvocation RIitems = 6; // 用户api调用信息和回调信息
+}
+
+message RtcInvocation {
+  int64 lts = 1; // 时间戳
+  int32 classId = 2; // class id
+  int32 apiId = 3; // api id
+  int32 seq = 4; // sequence id
+  string param = 5; // 参数列表，json格式
+  int32 code = 6; // 返回值
+  int32 dur = 7; // 调用时长
+}
+
+// id = 10034
+message ApiStatsGroup {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid 信息
+  string serviceId = 3; // service id
+  string sid = 4; // session id。频道前操作和全局可能为空
+  string ver = 5; // version
+  repeated ApiStats ASitems = 6; // 用于描述周期性api或stats上报
+}
+
+message ApiStats {
+  int64 lts = 1; // 时间戳
+  int32 statsInterval = 2; // 统计周期，单位秒
+  int32 classId = 3; // class id
+  int32 apiId = 4; // api id
+  int32 count = 5; // 统计周期内总共调用次数
+  string param = 6; // 参数列表，json格式
+}
+
+// id = 10036
+message RtcFeatureStatsGroup {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid信息
+  string serviceId = 3; // service id
+  string sid = 4; // session id，同时有几个sid的时候报第一个sid
+  string ver = 5; // version
+  repeated RtcFeatureStats RFSitems = 6; // feature使用时长统计
+}
+
+message RtcFeatureStats {
+  int64 lts = 1; // 时间戳
+  int32 featureId = 2; // feature id
+  int32 dur = 3; // 该feature的应用时长
+  string param = 4; // 参数列表，json格式
+}
+
+// id = 10054
+message MarketplaceExtensionInfo {
+  int64 lts = 1; // 时间戳，必须存在
+  int32 vid = 2; // vid 信息
+  string sid = 4; // session id
+  string cname = 5; // 频道名
+  int64 cid = 6; // 频道id
+  int64 uid = 7; // 用户id
+  int64 elapse = 8; // 加频道耗时
+  string extensionInfo = 9; // json格式的供应商名和插件名，比如：{ 	"agora1": ["beauty.builtin", "equalization_local_playback"], 	"agora2": ["formant_pcm"] }
+  string serviceId = 10; // SDK engine的每次初始化的标识
+  string installId = 11; // SDK随app的每次安装的标识
+}
+
+// id = 10081
+message VideoAndroidTextureCopyStatus {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 6;
+  int64 elapse = 8;
+  bool enable = 10; // 是否开启android采集测拷贝
+  int32 vid = 11; // vid 信息
+}
+
+// id = 10082
+message VideoPipelineDataFormat {
+  string sid = 1;
+  string cname = 2;
+  int64 cid = 3;
+  int64 lts = 4;
+  int64 uid = 5;
+  int64 elapse = 6;
+  int32 format = 7; // 0:I420 当前通用的I420格式  1:rgba RGBA的格式 2:texture/cvPixerbuffer 纹理 GPU格式
+  int32 vid = 8; // vid 信息
+}
+
+// id = 10097
+message PreloadChannel {
+  int64 lts = 1; // 时间戳
+  int32 vid = 2; // vid 信息
+  int64 startTs = 3; // 初次预分配请求的时间戳
+  int64 elapse = 4; // 距离初次预分配请求的时长（ms）
+  string sid = 5; // session id
+  string installId = 6; // SDK随app的每次安装的标识
+  string serviceId = 7; // SDK engine的每次初始化的标识
+  string sdkVer = 8; // SDK版本号
+  string ip = 9; // 设备IP地址
+  int64 cid = 10; // 频道ID
+  string cname = 11; // 频道名
+  int64 refreshIntervalMs = 12; // 刷新间隔（ms）
+  int32 currentCount = 13; // 现存的预分配请求个数
+  int64 uid = 14; // 用户ID
+  string strUid = 15; // 字符串形式的用户ID
+  int32 responseTime = 16; // 此次预分配耗时。预分配失败为-1
+  int32 errorCode = 17; // 错误码。预分配成功时为0
+  string vocsIp = 18; // vocs IP
+}
+
+// id = 10168
+message FallbackOptionsUpdated {
+  int64 lts = 1;                   // 时间戳，必须存在
+  int32 vid = 2;                   // vid 信息
+  string sid = 3;                  // session id
+  string cname = 4;                // channel name
+  int64 cid = 5;                   // 频道id
+  int64 uid = 6;                   // 用户id
+  int64 elapse = 7;                // 加入频道距离事件上报耗时
+  int32 nonVipFallbackOption = 8;  // 非vip用户的流回退等级
+  int32 vipFallbackOption = 9;     // vip用户的流回退等级
+  string vipList = 10;             // vip用户列表
+}
