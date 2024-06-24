@@ -179,5 +179,6 @@ int64_t AgoraRtcProxy::covert_ts_for_agora(int ts){
     first_ts = ts;
     offset_ts = getAgoraCurrentMonotonicTimeInMs() - ts;
   }
+  if(ts == 0) return 0;
   return ts + offset_ts;
 }
