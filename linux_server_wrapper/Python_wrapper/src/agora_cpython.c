@@ -5,7 +5,7 @@
 // ./C_language_wrapper/agora_sdk/ -lpython3.6m
 
 #define PY_SSIZE_T_CLEAN
-#include <python3.10/Python.h>
+#include <python3.6/Python.h>
 #include "../../C_wrapper/src/agora_rtc_wrapper.h"
 
 static PyObject* callback_func = NULL;
@@ -78,6 +78,16 @@ static PyObject* leaveAgoraChannel(PyObject* self, PyObject* args) {
   return Py_BuildValue("i", result);
 }
 
+FILE*  pcm_file = NULL;
+
+uint64_t util_get_time_ms(void) {
+  struct timeval tv;
+  if (gettimeofday(&tv, NULL) < 0) {
+    return 0;
+  }
+  return (((uint64_t)tv.tv_sec * (uint64_t)1000) + tv.tv_usec / 1000);
+}
+
 static PyObject* send_pcm_audio(PyObject* self, PyObject* args) {
   char* buffer;
   int buffer_size;
@@ -94,10 +104,17 @@ static PyObject* send_pcm_audio(PyObject* self, PyObject* args) {
   if (!PyArg_ParseTuple(args, "y#ii", &buffer, &buffer_size,&_size,&pts)) {
     return NULL;
   }
+  if(pcm_file == NULL){
+    pcm_file = fopen("c_dump.pcm","wb");
+  }else{
+    fwrite(buffer,buffer_size,1,pcm_file);
+  }
+  printf("size %d time %llu \n",buffer_size,util_get_time_ms());
   int result = SendPcmAudio(buffer, buffer_size,pts);
 
   return Py_BuildValue("i", result);
 }
+
 
 static PyObject* send_yuv_video(PyObject* self, PyObject* args) {
   char* buffer;
