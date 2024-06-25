@@ -56,15 +56,15 @@ libagora_rtc_python.joinAgoraChannel()
 
 buffer_size = 320
 buffer = ctypes.create_string_buffer(buffer_size)
-stream, sr = sf.read("test_16k(1).wav", dtype='float32')
-images = [os.path.join("/shirunhua/wav2lip256HQdemo/linux_server_language_wrapper/Python_wrapper/demo/test_25fps", f)
+stream, sr = sf.read("test_16k1.wav", dtype='float32')
+images = [os.path.join("./test_25fps", f)
           for f in
-          os.listdir("/shirunhua/wav2lip256HQdemo/linux_server_language_wrapper/Python_wrapper/demo/test_25fps") if
+          os.listdir("./test_25fps") if
           f.endswith(('.bmp', '.jpg', '.jpeg', '.png'))]
 # sorted_files =
 # sorted(images, key=sort_key)
 # print(images)
-data, samplerate = sf.read('test_16k(1).wav', dtype='int16')
+data, samplerate = sf.read('test_16k1.wav', dtype='int16')
 # padded_data = np.concatenate((data, np.zeros(len(images) * 4 - len(data) , dtype=data.dtype)))
 # write_audio_data_to_pipe(data,160)
 # print("=======================")
