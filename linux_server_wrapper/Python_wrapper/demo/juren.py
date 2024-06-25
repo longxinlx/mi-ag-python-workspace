@@ -81,6 +81,7 @@ def send_video():
         yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420)
         yuv = yuv.reshape(720 * 1280 * 3 // 2)
         libagora_rtc_python.send_yuv_video(yuv, 720, 1280, int(increment))
+        print(f"Increment: {increment}")
         increment += step  # 每次递增
         time.sleep(0.04)  # 确保视频流的时间间隔
 
