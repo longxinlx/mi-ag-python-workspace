@@ -73,10 +73,10 @@ data, samplerate = sf.read('test_16k1.wav', dtype='int16')
 # print(len(data))
 
 def send_video():
+    step = 19000 / 486  # 计算每次递增的值
+    increment = 0  # 初始增量值为0
     for i in range(486):
         print(i)
-        step = 19000 / 486  # 计算每次递增的值
-        increment = 0  # 初始增量值为0
         image = cv2.imread("./test_25fps/{}.bmp".format(i + 1))
         yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420)
         yuv = yuv.reshape(720 * 1280 * 3 // 2)
