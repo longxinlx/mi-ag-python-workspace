@@ -75,20 +75,25 @@ data, samplerate = sf.read('test_16k1.wav', dtype='int16')
 def send_video():
     for i in range(486):
         print(i)
+        step = 19000 / 486  # 计算每次递增的值
+        increment = 0  # 初始增量值为0
         image = cv2.imread("./test_25fps/{}.bmp".format(i + 1))
         yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420)
         yuv = yuv.reshape(720 * 1280 * 3 // 2)
-        libagora_rtc_python.send_yuv_video(yuv, 720, 1280, 0)
+        libagora_rtc_python.send_yuv_video(yuv, 720, 1280, int(increment))
+        increment += step  # 每次递增
         time.sleep(0.04)  # 确保视频流的时间间隔
 
 
 def send_audio():
     index = 0
+    increment = 10  # 音频帧的时间戳
     while index * 160 < len(data):
         print(index)
         for i in range(4):
             audio = data[index * 160: (index + 1) * 160]
-            libagora_rtc_python.send_pcm_audio(audio.tobytes(), 320, 0)
+            libagora_rtc_python.send_pcm_audio(audio.tobytes(), 320, increment)
+            increment += 10
             index += 1
         time.sleep(0.04)  # 根据音频帧率调整
 
