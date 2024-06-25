@@ -54,7 +54,7 @@ libagora_rtc_python.joinAgoraChannel()
 
 buffer_size = 320
 buffer = ctypes.create_string_buffer(buffer_size)
-stream, sr = sf.read("test_16k(1).wav", dtype='float32')
+stream, sr = sf.read("test_16k1.wav", dtype='float32')
 images = [os.path.join("./test_25fps", f)
           for f in
           os.listdir("./test_25fps") if
