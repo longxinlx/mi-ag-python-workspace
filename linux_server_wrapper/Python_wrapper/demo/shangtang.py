@@ -74,10 +74,13 @@ data, samplerate = sf.read('test_16k1.wav', dtype='int16')
 index = 0
 for i in range(486):
     # for image_path in images:
-    image = cv2.imread("./test_25fps/{}.bmp".format(i + 1))
-    yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420)
-    yuv = yuv.reshape(720 * 1280 * 3 // 2)
-    libagora_rtc_python.send_yuv_video(yuv, 720, 1280, 0)
+
+    # image = cv2.imread("./test_25fps/{}.bmp".format(i + 1))
+    # yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420)
+    # yuv = yuv.reshape(720 * 1280 * 3 // 2)
+    # libagora_rtc_python.send_yuv_video(yuv, 720, 1280, 0)
+
+
     # AudioData = file.read(320*4)
     # libagora_rtc_python.send_pcm_audio(AudioData,320*4,0)
     for i in range(4):
