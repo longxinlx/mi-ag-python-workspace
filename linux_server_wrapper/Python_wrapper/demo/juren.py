@@ -72,9 +72,24 @@ data, samplerate = sf.read('test_16k1.wav', dtype='int16')
 # print(len(images))
 # print(len(data))
 
+
+
+class Pacer:
+    def __init__(self,interval):
+        self.last_call_time = time.time()
+        self.interval = interval
+
+    def pace(self):
+        current_time = time.time()
+        elapsed_time = current_time - self.last_call_time
+        if elapsed_time < self.interval:
+            time.sleep(self.interval - elapsed_time)
+        self.last_call_time = time.time()
+
 def send_video():
     step = 19000 / 486  # 计算每次递增的值
     increment = 0  # 初始增量值为0
+    pacer = Pacer(0.04)
     for i in range(486):
         print(i)
         image = cv2.imread("./test_25fps/{}.bmp".format(i + 1))
@@ -83,7 +98,8 @@ def send_video():
         libagora_rtc_python.send_yuv_video(yuv, 720, 1280, int(increment))
         print(f"Increment: {increment}")
         increment += step  # 每次递增
-        time.sleep(0.39)  # 确保视频流的时间间隔
+        pacer.pace()
+        # time.sleep(0.01)  # 确保视频流的时间间隔
 
 
 def send_audio():
