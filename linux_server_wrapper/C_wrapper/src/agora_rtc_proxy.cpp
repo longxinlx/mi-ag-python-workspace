@@ -106,6 +106,7 @@ int AgoraRtcProxy::SendPcmAudio(const char *buffer10ms, int bufferSize,
       buffer10ms, covert_ts_for_agora(pts), 0, samplesPer10ms, agora::rtc::TWO_BYTES_PER_SAMPLE,
       audio_send_channel_nums_, audio_send_sample_rate_);
   // printf("SendPcmAudio %d \n",r);
+  printf("qidebug, sendPcmAudio pts: %d \n",covert_ts_for_agora(pts));
   return r;
 }
 
@@ -124,6 +125,7 @@ int AgoraRtcProxy::SendVideo(const char *buffer, int width, int height,
   videoFrame.cropBottom = 0;
   videoFrame.rotation = 0;
   videoFrame.timestamp = covert_ts_for_agora(pts);
+  printf("qidebug, SendVideo pts: %d \n",covert_ts_for_agora(pts));
   videoFrameSender_->sendVideoFrame(videoFrame);
 }
 
