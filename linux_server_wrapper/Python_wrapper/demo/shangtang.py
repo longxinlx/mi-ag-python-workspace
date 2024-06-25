@@ -11,7 +11,7 @@ import cv2
 import soundfile as sf
 import numpy as np
 
-file = open('test_16k(1).wav', 'rb')
+file = open('test_16k1.wav', 'rb')
 # file = open('demo.pcm', 'rb')
 if os.path.exists('output_16k2.pcm'):
     print('存在')
