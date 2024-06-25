@@ -83,7 +83,7 @@ def send_video():
         libagora_rtc_python.send_yuv_video(yuv, 720, 1280, int(increment))
         print(f"Increment: {increment}")
         increment += step  # 每次递增
-        time.sleep(0.04)  # 确保视频流的时间间隔
+        time.sleep(0.39)  # 确保视频流的时间间隔
 
 
 def send_audio():
