@@ -22,7 +22,12 @@ import re
 
 
 def agora_callback_fun(buf, num):
-    print("call back num is:", num, type(buf), len(buf), str(buf))
+    # 检查 buf 是否是字节数组并进行解码
+    if isinstance(buf, bytes):
+        buf_content = buf.decode('utf-8')  # 假设编码为 UTF-8
+    else:
+        buf_content = str(buf)  # 否则，直接将其转换为字符串
+    print("call back num is:", num, type(buf), len(buf), buf_content)
 
 
 def agora_audio_frame_handler(audiobuf, uid):
