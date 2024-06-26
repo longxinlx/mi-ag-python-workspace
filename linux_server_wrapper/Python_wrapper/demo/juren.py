@@ -167,8 +167,8 @@ audio_thread.join()
 #     time.sleep(0.04)
 #     i = i + 1
 
-libagora_rtc_python.leaveAgoraChannel()
-
-time.sleep(1)
-
-libagora_rtc_python.destroy_agora_engine()
+# libagora_rtc_python.leaveAgoraChannel()
+#
+# time.sleep(1)
+#
+# libagora_rtc_python.destroy_agora_engine()
